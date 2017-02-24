@@ -1,0 +1,40 @@
+{
+  "name": "graduateinstitute",
+  "version": "1.0.0",
+  "description": "A react project for the graduate institute",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --config webpack.config.js -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinsebastien/graduateInstitute.git"
+  },
+  "author": "Sébastien Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinsebastien/graduateInstitute/issues"
+  },
+  "homepage": "https://github.com/martinsebastien/graduateInstitute#readme",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "css-loader": "^0.26.2",
+    "eslint-loader": "^1.6.3",
+    "file-loader": "^0.10.0",
+    "html-webpack-plugin": "^2.28.0",
+    "node-sass": "^4.5.0",
+    "scss-loader": "0.0.1",
+    "style-loader": "^0.13.2",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
