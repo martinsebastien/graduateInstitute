@@ -12,7 +12,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader', 'eslint-loader'] },
-      { test: /\.s?css$/, exclude: /node_modules/, loaders: ['css-loader', 'style-loader', 'sass-loader'] },
+      { test: /\.s?css$/, exclude: /node_modules/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.(png|gif|jpe?g|svg)$/, exclude: /node_modules/, loader: 'file-loader', query: { name: '[name]-[md5:hash:hex:8].[ext]', publicPath: 'assets/', outputPath: 'assets/' } },
     ],
   },
