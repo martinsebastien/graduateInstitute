@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Background from '../Background'
 
 import Header from '../Header';
 
@@ -14,6 +15,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
+        <Background />
         {this.props.children}
       </div>
     );
