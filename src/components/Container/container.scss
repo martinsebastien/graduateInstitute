@@ -1,0 +1,14 @@
+:local(.container) {
+
+  width: 100%;
+
+  @media screen and (min-width: 960px) {
+    width: 960px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+  }
+
+}
