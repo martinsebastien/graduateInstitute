@@ -1,10 +1,10 @@
 {
-    "presets": [
-        "react",
-        "latest"
-    ],
-    "plugins": [
-        "transform-class-properties",
-        "transform-runtime"
-    ]
+  "presets": [
+    "react",
+    "latest"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "transform-runtime"
+  ]
 }
