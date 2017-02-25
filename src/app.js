@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
+import 'reset-css';
+
 import App from './components/App';
 import ArticlesPage from './components/ArticlesPage';
 import ArticlePage from './components/ArticlePage';

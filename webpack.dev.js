@@ -12,8 +12,8 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader', 'eslint-loader'] },
-      { test: /\.s?css$/, exclude: /node_modules/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
-      { test: /\.(png|gif|jpe?g|svg)$/, exclude: /node_modules/, loader: 'file-loader', query: { publicPath: 'assets/', outputPath: 'assets/' } },
+      { test: /\.s?css$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
+      { test: /\.(png|gif|jpe?g|svg)$/, loader: 'file-loader', query: { publicPath: 'assets/', outputPath: 'assets/' } },
     ],
   },
   devServer: {
