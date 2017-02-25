@@ -13,7 +13,7 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={ArticlesPage} />
-      <Route path="/article-:slug" component={ArticlePage} />
+      <Route path="/article/:slug" component={ArticlePage} />
     </Route>
     <Route path="*" component={NoMatchPage} />
   </Router>
