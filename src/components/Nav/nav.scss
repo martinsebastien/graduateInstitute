@@ -1,0 +1,22 @@
+:local(.nav) {
+
+  .tmp-col {
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .tmp-row50 {
+      width: 100%;
+
+      @media screen and (min-width: 800px) {
+        float: left;
+        width: 50%;
+      }
+    }
+
+  }
+
+}
