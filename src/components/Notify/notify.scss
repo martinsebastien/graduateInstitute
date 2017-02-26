@@ -1,0 +1,64 @@
+:local(.notify) {
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+
+  p {
+    color: #474747;
+    font-family: 'Open Sans';
+    font-size: 12px;
+    font-weight: 400;
+    height: 60px;
+    line-height: 60px;
+    float: right;
+  }
+
+  input:not(:checked),
+  input:checked {
+    display: none;
+
+    & + label {
+      float: right;
+      position: relative;
+      cursor: pointer;
+      display: block;
+      width: 50px;
+      height: 30px;
+      margin: 15px 25px;
+      border-radius: 30px;
+      background-color: #f8f8f8; //#efefea;
+      border: 1px solid #dfdfe9;
+      box-shadow: #dfdfe9 0px 0px 0px 0px inset;
+      transition-property: background-color;
+      transition-duration: .3s;
+
+      &::after {
+        content: '';
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: 0;
+        border-radius: 100%;
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,.4);
+        transition-property: margin-left;
+        transition-duration: .2s;
+      }
+
+    }
+  }
+
+  input:checked + label {
+
+    background-color: #e20020;
+    border-color: #e20020;
+
+    &::after {
+      margin-left: 20px;
+    }
+
+  }
+
+}
