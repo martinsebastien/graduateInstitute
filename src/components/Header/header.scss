@@ -6,6 +6,7 @@
   margin-bottom: 156px;
 
   h1 {
+    display: none;
     float: right;
     color: #e3051a;
     font-family: "Open Sans", sans-serif;
@@ -13,6 +14,11 @@
     font-weight: 700;
     line-height: 30px;
     text-transform: uppercase;
+
+    @media screen and (min-width: 575px) {
+      display: block;
+    }
+
   }
 
 }
