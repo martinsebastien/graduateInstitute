@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 
 import { FaSearch } from 'react-icons/lib/fa';
 import style from './search.scss';
@@ -9,7 +9,7 @@ export default class Search extends Component {
   state = {};
 
   componentWillMount() {
-    this.searchId = _.uniqueId('search-');
+    this.searchId = uniqueId('search-');
   }
 
   searchId = '';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 
 import style from './filter-menu.scss';
 
@@ -8,7 +8,7 @@ export default class FilterMenu extends Component {
   state = {};
 
   componentWillMount() {
-    this.selectId = _.uniqueId();
+    this.selectId = uniqueId('filtermenu-');
   }
 
   selectId = '';
