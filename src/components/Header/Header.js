@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 import style from './header.scss';
+import logo from './logo.png';
 
 import Container from '../Container';
-import Logo from '../Logo';
 
 export default class Header extends Component {
 
@@ -13,7 +14,9 @@ export default class Header extends Component {
     return (
       <div className={style.header}>
         <Container>
-          <Logo />
+          <Link to="/">
+            <img className="logo" src={logo} alt="" />
+          </Link>
           <h1>blog of the Director of Studies</h1>
         </Container>
       </div>
