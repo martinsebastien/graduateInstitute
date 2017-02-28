@@ -17,7 +17,7 @@ export default class Header extends Component {
           <Link to="/">
             <img className="logo" src={logo} alt="" />
           </Link>
-          <h1>blog of the Director of Studies</h1>
+          <h1>The Academic Adviser</h1>
         </Container>
       </div>
     );

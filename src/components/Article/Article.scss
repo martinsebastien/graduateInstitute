@@ -1,0 +1,118 @@
+:local(.article){
+  width: 100%;
+  max-width: 960px;
+  margin-bottom: 40px;
+
+  .imgContainer{
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    text-align: center;
+
+    img{
+      min-width: 100%;
+      min-height: 450px;
+    }
+  }
+
+  .contentContainer{
+    padding: 50px;
+    background: #fff;
+
+    h2{
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 41px;
+      margin-bottom: 10px;
+
+      @media screen and (max-width: 750px) {
+        font-size: 28px;
+        line-height: 31px;
+      }
+
+      @media screen and (max-width: 400px) {
+        font-size: 21px;
+        line-height: 24px;
+      }
+
+
+    }
+
+    .date{
+      color: #e3051a;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 35px;
+    }
+
+    .textContent{
+      color: #474747;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+  .blockContainer{
+    background: #fff;
+    border-top: solid 1px rgba(0,0,0,0.2);
+
+    .profilContainer{
+      display: inline-block;
+      padding: 40px;
+      min-width: 65%;
+      border-right: solid 1px rgba(0,0,0,0.2);
+
+      @media screen and (max-width: 840px) {
+        min-width: 40%;
+      }
+
+      .profilPic{
+        height: 60px;
+        width: 60px;
+        border-radius: 60px;
+        overflow: hidden;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 20px;
+
+        img{
+          height: 60px;
+          min-width: 60px;
+          min-height: 60px;
+        }
+      }
+
+      .authorContainer{
+        display: inline-block;
+        vertical-align: middle;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        color: #474747;
+
+        .postText{
+          color: #e3051a;
+        }
+      }
+    }
+    .categoryContainer{
+      display: inline-block;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      padding: 40px;
+      color: #474747;
+
+      .postText{
+        color: #e3051a;
+      }
+
+    }
+  }
+
+}
