@@ -2,15 +2,31 @@
   width: 100%;
   margin-bottom: 40px;
 
+  *{
+    transition: all 0.4s;
+  }
+
   .imgContainer{
     width: 100%;
     height: 450px;
     overflow: hidden;
     text-align: center;
 
+    @media screen and (max-width: 750px) {
+      height: 320px;
+    }
+
+
     img{
-      min-width: 100%;
+      max-width: 980px;
       min-height: 450px;
+      margin: auto;
+
+      @media screen and (max-width: 750px) {
+        max-width: 750px;
+        min-height: 320px;
+      }
+
     }
   }
 
@@ -60,6 +76,11 @@
     background: #fff;
     border-top: solid 1px rgba(0,0,0,0.2);
 
+    @media screen and (max-width: 488px) {
+      text-align: center;
+    }
+
+
     .profilContainer{
       display: inline-block;
       padding: 40px;
@@ -69,6 +90,15 @@
       @media screen and (max-width: 840px) {
         min-width: 40%;
       }
+
+      @media screen and (max-width: 488px) {
+        width: calc(100% - 80px);
+        text-align: center;
+        border: none;
+        padding-top: 20px;
+        padding-bottom: 0;
+      }
+
 
       .profilPic{
         height: 60px;
@@ -93,6 +123,12 @@
         font-weight: 600;
         font-size: 12px;
         color: #474747;
+        text-align: left;
+
+        @media screen and (max-width: 488px) {
+          vertical-align: top;
+        }
+
 
         .postText{
           color: #e3051a;
@@ -103,9 +139,30 @@
       display: inline-block;
       font-family: "Open Sans", sans-serif;
       font-weight: 600;
+      vertical-align: middle;
       font-size: 12px;
       padding: 40px;
       color: #474747;
+
+      @media screen and (max-width: 488px) {
+        width: calc(100% - 80px);
+        text-align: center;
+        padding-top: 0;
+        padding-bottom: 20px;
+        padding-left: 50px;
+        margin-top: -22px;
+
+        .profilPic{
+          width: 60px;
+          display: inline-block;
+        }
+      }
+
+      .authorContainer{
+        display: inline-block;
+        text-align: left;
+      }
+
 
       .postText{
         color: #e3051a;

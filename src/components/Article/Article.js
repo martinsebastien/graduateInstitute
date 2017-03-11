@@ -35,9 +35,10 @@ export default class Article extends Component {
             </div>
           </div>
           <div className="categoryContainer">
-            <div className="alignCategory">
+            <div className="profilPic"></div>
+            <div className="authorContainer">
               <p className="postText">Categories</p>
-              <p>Masters, Bachelors</p>
+              <p>Bachelor, Master</p>
             </div>
           </div>
         </div>
