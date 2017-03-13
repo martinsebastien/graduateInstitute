@@ -25,7 +25,7 @@ export default class Filter extends Component {
       <div className={style.filter}>
         <button onClick={this.toggleSubMenu} className="filter-toggle">
           FILTER
-          {this.state.subMenuOpen ? <FaCaretDown /> : <FaCaretUp />}
+          {this.state.subMenuOpen ? <FaCaretUp /> : <FaCaretDown />}
         </button>
         {this.state.subMenuOpen ? (
           <div className="filter-submenu">

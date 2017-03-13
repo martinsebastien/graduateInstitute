@@ -11,6 +11,10 @@
     height: 60px;
     line-height: 60px;
     float: right;
+
+    @media screen and (max-width: 660px){
+      float: left;
+    }
   }
 
   input:not(:checked),
@@ -31,6 +35,16 @@
       box-shadow: #dfdfe9 0px 0px 0px 0px inset;
       transition-property: background-color;
       transition-duration: .3s;
+
+      @media screen and (max-width: 660px){
+        float: left;
+      }
+
+      @media screen and (max-width: 332px){
+        margin-right: 10px;
+      }
+
+
 
       &::after {
         content: '';
