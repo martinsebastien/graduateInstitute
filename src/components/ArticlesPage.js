@@ -42,10 +42,6 @@ export default class ArticlesPage extends Component {
     this.props.loadPinposts();
   }
 
-  handleMoreLoad = () => {
-
-  }
-
   pinposts() {
     const { pinposts } = this.props.store;
 
@@ -64,7 +60,7 @@ export default class ArticlesPage extends Component {
   posts() {
     const { posts, loadPosts: { processing } } = this.props.store;
 
-    if (processing) {
+    if (processing && !posts.length) {
       return (
         <div style={style.loading}>
           <FaSpinner size={60} />
