@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import { FaCaretUp, FaCaretDown } from 'react-icons/lib/fa';
 import style from './filter.scss';
@@ -7,32 +7,35 @@ import FilterMenu from '../FilterMenu';
 
 export default class Filter extends Component {
 
-  constructor() {
-    super();
-    this.toggleSubMenu = this.toggleSubMenu.bind(this);
-  }
-
-  state = {
-    subMenuOpen: false,
+  static propTypes = {
+    filterSubmenuToggle: PropTypes.func.isRequired,
+    store: PropTypes.shape({
+      filter: PropTypes.shape({
+        submenuOpen: PropTypes.bool.isRequired,
+      }).isRequired,
+    }).isRequired,
   };
 
-  toggleSubMenu() {
-    this.setState(s => ({ subMenuOpen: !s.subMenuOpen }));
+  state = {};
+
+  handleToggleClick = (e) => {
+    e.preventDefault();
+    this.props.filterSubmenuToggle();
   }
 
   render() {
+    const { submenuOpen } = this.props.store.filter;
     return (
       <div className={style.filter}>
-        <button onClick={this.toggleSubMenu} className="filter-toggle">
+        <button onClick={this.handleToggleClick} className="filter-toggle">
           FILTER
-          {this.state.subMenuOpen ? <FaCaretUp /> : <FaCaretDown />}
+          {submenuOpen ? <FaCaretUp /> : <FaCaretDown />}
         </button>
-        {this.state.subMenuOpen ? (
+        {submenuOpen && (
           <div className="filter-submenu">
-            <button className="filter-ok">OK</button>
-            <FilterMenu />
+            <FilterMenu {...this.props} />
           </div>
-        ) : null}
+        )}
       </div>
     );
   }

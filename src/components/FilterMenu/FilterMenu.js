@@ -1,39 +1,71 @@
-import React, { Component } from 'react';
-import { uniqueId } from 'lodash';
+import React, { Component, PropTypes } from 'react';
+import { FaSpinner } from 'react-icons/lib/fa';
+import _ from 'lodash';
 
 import style from './filter-menu.scss';
 
 export default class FilterMenu extends Component {
 
-  state = {};
+  static propTypes = {
+    filter: PropTypes.func.isRequired,
+    filterCategoryToggle: PropTypes.func.isRequired,
+    store: PropTypes.shape({
+      categories: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+      filter: PropTypes.shape({
+        processing: PropTypes.bool.isRequired,
+        categories: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+        filteredBy: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+      }).isRequired,
+    }).isRequired,
+  };
 
-  componentWillMount() {
-    this.selectId = uniqueId('filtermenu-');
+  handleFilterClick = (e) => {
+    e.preventDefault();
+    this.props.filter();
   }
 
-  selectId = '';
-  idFor(filterName) {
-    return `${filterName}-${this.selectId}`;
+  handleCategoryClick = (e, id) => {
+    e.preventDefault();
+    this.props.filterCategoryToggle(id);
   }
 
-  selectId = '';
+  filterButton = () => {
+    const { categories, filteredBy, processing } = this.props.store.filter;
+
+    if (processing) {
+      return (
+        <div className="filter-loading">
+          <FaSpinner />
+        </div>
+      );
+    }
+
+    return (
+      _.difference(categories, filteredBy).length ||
+      _.difference(filteredBy, categories).length
+    ) ? <button className="filter-ok" onClick={this.handleFilterClick}>OK</button> : null;
+  }
+
+  categoryItem = (category) => {
+    const checked = !!this.props.store.filter.categories.find(c => c === category.id);
+
+    return (
+      <li key={category.id}>
+        <a
+          href=""
+          onClick={e => this.handleCategoryClick(e, category.id)}
+          className={checked ? 'checked' : null}
+        >{category.name}</a>
+      </li>
+    );
+  }
 
   render() {
     return (
       <div className={style.filterMenu}>
+        {this.filterButton()}
         <ul>
-          <li>
-            <input type="checkbox" name="filter[bachelors]" id={this.idFor('bachelors')} />
-            <label htmlFor={this.idFor('bachelors')}>Bachelors</label>
-          </li>
-          <li>
-            <input type="checkbox" name="filter[masters]" id={this.idFor('masters')} />
-            <label htmlFor={this.idFor('masters')}>Masters</label>
-          </li>
-          <li>
-            <input type="checkbox" name="filter[phd]" id={this.idFor('phd')} />
-            <label htmlFor={this.idFor('phd')}>Phd</label>
-          </li>
+          {this.props.store.categories.map(this.categoryItem)}
         </ul>
       </div>
     );

@@ -18,15 +18,10 @@
 
 
     img{
-      max-width: 980px;
-      min-height: 450px;
+      width: 100%;
+      height: 100%;
       margin: auto;
-
-      @media screen and (max-width: 750px) {
-        max-width: 750px;
-        min-height: 320px;
-      }
-
+      object-fit: cover;
     }
   }
 
@@ -63,13 +58,15 @@
       margin-bottom: 35px;
     }
 
-    .textContent{
+    .textContent p{
+      overflow: hidden;
       color: #474747;
       font-family: "Open Sans", sans-serif;
       font-weight: 400;
       font-size: 14px;
       line-height: 18px;
     }
+
   }
 
   .blockContainer{
@@ -78,6 +75,10 @@
 
     @media screen and (max-width: 488px) {
       text-align: center;
+    }
+
+    p {
+      max-width: 140px;
     }
 
 
@@ -132,6 +133,7 @@
 
         .postText{
           color: #e3051a;
+          margin-bottom: 5px;
         }
       }
     }
@@ -166,6 +168,7 @@
 
       .postText{
         color: #e3051a;
+          margin-bottom: 5px;
       }
 
     }

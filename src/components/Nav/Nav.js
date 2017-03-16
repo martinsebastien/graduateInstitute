@@ -15,9 +15,9 @@ export default class Nav extends Component {
     return (
       <div className={style.nav}>
         <Container>
-          <Search />
+          <Search {...this.props} />
           <div className="tmp-col">
-            <div className="tmp-row50"><Filter /></div>
+            <div className="tmp-row50"><Filter {...this.props} /></div>
             <div className="tmp-row50"><Notify /></div>
           </div>
         </Container>
