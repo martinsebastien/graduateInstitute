@@ -1,4 +1,5 @@
 /* eslint import/prefer-default-export: "off" */
+import generatePost from '../models/post';
 
 function pinpostsLoading() {
   return {
@@ -24,10 +25,9 @@ export function loadPinposts() {
   return async (dispach) => {
     await dispach(pinpostsLoading());
     try {
-      // TODO: find correct endpoints for pinned article
-      // const res = await fetch('//graduateinstitute.blackpen.tv/wp-json/wp/v2/posts?_embed');
-      // const data = await res.json();
-      const posts = []; // data.map(generatePost);
+      const res = await fetch('//graduateinstitute.blackpen.tv/wp-json/wp/v2/posts?_embed&sticky=true');
+      const data = await res.json();
+      const posts = data.map(generatePost);
       return dispach(pinpostsLoaded(posts));
     } catch (e) {
       return dispach(pinpostsLoadingFailed(e));

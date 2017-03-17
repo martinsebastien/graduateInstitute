@@ -3,7 +3,7 @@ import { FaSpinner } from 'react-icons/lib/fa';
 
 import Container from './Container';
 import SectionTitle from './SectionTitle';
-// import PinnedArticle from '../PinnedArticle';
+import PinnedArticle from './PinnedArticle';
 import Article from './Article';
 import InfiniteLoader from './InfiniteLoader';
 import Footer from './Footer';
@@ -52,7 +52,7 @@ export default class ArticlesPage extends Component {
     return (
       <div>
         <SectionTitle>Pinned Articles</SectionTitle>
-        {pinposts.map(post => <Article post={post} key={post.id} />)}
+        {pinposts.map(post => <PinnedArticle post={post} key={post.id} />)}
       </div>
     );
   }
