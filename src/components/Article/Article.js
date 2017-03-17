@@ -7,6 +7,7 @@ import style from './Article.scss';
 export default class Article extends Component {
 
   static propTypes = {
+    full: PropTypes.bool,
     post: PropTypes.shape({
       categories: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -25,10 +26,14 @@ export default class Article extends Component {
     }).isRequired,
   };
 
+  static defaultProps = {
+    full: false,
+  };
+
   state = {};
 
   render() {
-    const { post } = this.props;
+    const { post, full } = this.props;
 
     return (
       <div className={style.article}>
@@ -36,7 +41,7 @@ export default class Article extends Component {
         <div className="contentContainer">
           <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
           <p className="date">{moment(post.date).format('dddd, Do MMMM Y')}</p>
-          <div className="textContent" dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div className="textContent" dangerouslySetInnerHTML={{ __html: full ? post.content : post.excerpt }} />
         </div>
         <div className="blockContainer">
           <div className="profilContainer">
