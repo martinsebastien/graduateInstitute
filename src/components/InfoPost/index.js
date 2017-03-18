@@ -1,3 +1,3 @@
-import FilterMenu from './FilterMenu';
+import InfoPost from './InfoPost';
 
-export default FilterMenu;
+export default InfoPost;
