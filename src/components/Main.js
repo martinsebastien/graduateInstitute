@@ -9,6 +9,7 @@ export default class Main extends Component {
 
   static propTypes = {
     loadCategories: PropTypes.func.isRequired,
+    checkNotificationAvailability: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired,
   };
 
@@ -16,6 +17,7 @@ export default class Main extends Component {
 
   componentWillMount() {
     this.props.loadCategories();
+    this.props.checkNotificationAvailability();
   }
 
   render() {

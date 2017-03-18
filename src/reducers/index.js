@@ -12,6 +12,7 @@ import loadMorePosts from './loadMorePosts';
 import loadPinposts from './loadPinposts';
 import loadPost from './loadPost';
 import loadCategories from './loadCategories';
+import notification from './notification';
 
 export default combineReducers({
   posts,
@@ -25,5 +26,6 @@ export default combineReducers({
   loadPinposts,
   loadPost,
   loadCategories,
+  notification,
   routing: routerReducer,
 });

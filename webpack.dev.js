@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const path = require('path');
 
 const _src = path.resolve(__dirname, 'src');
@@ -28,6 +29,9 @@ module.exports = {
       template: path.resolve(_src, 'app.html'),
       filename: 'index.html',
       inject: 'body',
+    }),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(_src, 'sw.js'),
     }),
   ],
 };

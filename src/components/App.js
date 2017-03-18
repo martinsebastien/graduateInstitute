@@ -7,6 +7,7 @@ import * as pinpostsActions from '../actions/pinposts';
 import * as categoriesActions from '../actions/categories';
 import * as searchActions from '../actions/search';
 import * as filterActions from '../actions/filter';
+import * as notificationActions from '../actions/notification';
 
 import Main from './Main';
 
@@ -17,6 +18,7 @@ const actions = Object.assign({},
   categoriesActions,
   searchActions,
   filterActions,
+  notificationActions,
 );
 
 export default connect(
