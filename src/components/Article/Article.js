@@ -1,6 +1,7 @@
 /* eslint react/no-danger: "off" */
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
+import InfoPost from '../InfoPost'
 
 import style from './Article.scss';
 
@@ -43,21 +44,28 @@ export default class Article extends Component {
           <p className="date">{moment(post.date).format('dddd, Do MMMM Y')}</p>
           <div className="textContent" dangerouslySetInnerHTML={{ __html: full ? post.content : post.excerpt }} />
         </div>
+
         <div className="blockContainer">
-          <div className="profilContainer">
-            <div className="profilPic"><img src={post.author.avatar} alt={post.author.name} /></div>
-            <div className="authorContainer">
-              <p className="postText">Posted by</p>
-              <p>{post.author.name}</p>
+          <div className="profilPic"><img src={post.author.avatar} alt={post.author.name} /></div>
+
+          <InfoPost />
+
+          <div className="containerInfoPost">
+            <div className="profilContainer">
+              <div className="authorContainer">
+                <p className="postText">Posted by</p>
+                <p>{post.author.name}</p>
+              </div>
+            </div>
+            <div className="categoryContainer">
+              <div className="profilPic" />
+              <div className="authorContainer">
+                <p className="postText">Categories</p>
+                <p>{post.categories.map(c => c.name).join(', ')}</p>
+              </div>
             </div>
           </div>
-          <div className="categoryContainer">
-            <div className="profilPic" />
-            <div className="authorContainer">
-              <p className="postText">Categories</p>
-              <p>{post.categories.map(c => c.name).join(', ')}</p>
-            </div>
-          </div>
+
         </div>
       </div>
     );

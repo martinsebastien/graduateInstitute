@@ -29,6 +29,11 @@
     padding: 50px;
     background: #fff;
 
+    @media screen and (max-width: 550px) {
+        padding: 20px;
+        padding-top: 30px;
+    }
+
     h2{
       font-family: 'Open Sans Condensed', sans-serif;
       font-size: 36px;
@@ -65,7 +70,10 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 18px;
+      margin-bottom: 15px;
     }
+
+
 
   }
 
@@ -90,6 +98,10 @@
 
       @media screen and (max-width: 840px) {
         min-width: 40%;
+      }
+
+      @media screen and (max-width: 550px) {
+        padding: 20px;
       }
 
       @media screen and (max-width: 488px) {
@@ -145,6 +157,11 @@
       font-size: 12px;
       padding: 40px;
       color: #474747;
+
+      @media screen and (max-width: 550px) {
+        padding: 20px;
+      }
+
 
       @media screen and (max-width: 488px) {
         width: calc(100% - 80px);
