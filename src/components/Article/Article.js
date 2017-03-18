@@ -19,6 +19,9 @@ export default class Article extends Component {
       author: PropTypes.shape({
         name: PropTypes.string.isRequired,
         avatar: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        phoneNumber: PropTypes.string.isRequired,
+        openingTimes: PropTypes.string.isRequired,
       }).isRequired,
       thumbnail: PropTypes.shape({
         alt: PropTypes.string.isRequired,

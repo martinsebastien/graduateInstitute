@@ -15,6 +15,10 @@ export default class InfoPost extends Component {
       author: PropTypes.shape({
         name: PropTypes.string.isRequired,
         avatar: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        slug: PropTypes.string.isRequired,
+        phoneNumber: PropTypes.string.isRequired,
+        openingTimes: PropTypes.string.isRequired,
       }).isRequired,
       thumbnail: PropTypes.shape({
         alt: PropTypes.string.isRequired,
@@ -22,8 +26,6 @@ export default class InfoPost extends Component {
       }).isRequired,
     }).isRequired,
   };
-
-  state = {};
 
   render() {
     const { author, categories } = this.props.post;
@@ -37,6 +39,17 @@ export default class InfoPost extends Component {
             <div className="authorContainer">
               <p className="postText">Posted by</p>
               <p>{author.name}</p>
+            </div>
+
+            <div className="authorDetails">
+              <p>Title</p>
+              <p>{this.props.post.author.title}</p>
+              <p>Email</p>
+              <p>{this.props.post.author.slug}</p>
+              <p>Phone</p>
+              <p>{this.props.post.author.phoneNumber}</p>
+              <p>Opening times</p>
+              <p>{this.props.post.author.openingTimes}</p>
             </div>
           </div>
 
