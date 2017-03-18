@@ -26,28 +26,29 @@ export default class InfoPost extends Component {
   state = {};
 
   render() {
+    const { author, categories } = this.props.post;
+
     return (
-      <div className={style.container}>
-        <div className="profilPic"><img src={this.props.post.author.avatar} alt={this.props.post.author.name} /></div>
+      <div className={style.infoPost}>
+        <div className="profilPic"><img src={author.avatar} alt={author.name} /></div>
 
         <div className="containerInfoPost">
           <div className="profilContainer">
             <div className="authorContainer">
               <p className="postText">Posted by</p>
-              <p>{this.props.post.author.name}</p>
+              <p>{author.name}</p>
             </div>
           </div>
 
           <div className="categoryContainer">
             <div className="authorContainer">
               <p className="postText">Categories</p>
-              <p>{this.props.post.categories.map(c => c.name).join(', ')}</p>
+              <p>{categories.map(c => c.name).join(', ')}</p>
             </div>
           </div>
 
         </div>
       </div>
-
     );
   }
 
