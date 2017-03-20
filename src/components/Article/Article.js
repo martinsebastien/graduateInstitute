@@ -56,11 +56,7 @@ export default class Article extends Component {
         </div>
       );
     }
-    return (
-      <div className="imgContainer">
-        <img src={post.thumbnail.src} alt={post.thumbnail.alt} />
-      </div>
-    );
+    return null;
   }
 
   render() {
