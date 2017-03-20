@@ -1,6 +1,11 @@
 /* eslint react/no-danger: "off" */
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+import Youtube from 'react-youtube';
 import moment from 'moment';
+import { FaAlignJustify } from 'react-icons/lib/fa';
+// import { FaAlignJustify, FaFile, FaLink } from 'react-icons/lib/fa';
+
 import InfoPost from '../InfoPost';
 
 import style from './Article.scss';
@@ -29,16 +34,56 @@ export default class Article extends Component {
 
   state = {};
 
+  thumbnail() {
+    const { post } = this.props;
+
+    if (post.videoUrl) {
+      return (
+        <div className="imgContainer">
+          <Youtube
+            videoId={post.videoUrl}
+            opts={{
+              height: '100%',
+              width: '100%',
+            }}
+          />
+        </div>
+      );
+    } else if (post.thumbnail.src) {
+      return (
+        <div className="imgContainer">
+          <img src={post.thumbnail.src} alt={post.thumbnail.alt} />
+        </div>
+      );
+    }
+    return (
+      <div className="imgContainer">
+        <img src={post.thumbnail.src} alt={post.thumbnail.alt} />
+      </div>
+    );
+  }
+
   render() {
     const { post, full } = this.props;
+    const url = `/article/${post.id}`;
 
     return (
       <div className={style.article}>
-        {post.thumbnail.src && <div className="imgContainer"><img src={post.thumbnail.src} alt={post.thumbnail.alt} /></div>}
+        {this.thumbnail()}
         <div className="contentContainer">
-          <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
+          {full ?
+            <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
+            :
+            <h2><Link to={url} dangerouslySetInnerHTML={{ __html: post.title }} /></h2>
+          }
           <p className="date">{moment(post.date).format('dddd, Do MMMM Y')}</p>
           <div className="textContent" dangerouslySetInnerHTML={{ __html: full ? post.content : post.excerpt }} />
+          {!full && (<div className="readmore">
+            <Link to={url}>
+              <FaAlignJustify /> READ MORE
+            </Link>
+          </div>)}
+
         </div>
         <InfoPost post={post} />
       </div>

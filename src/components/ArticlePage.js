@@ -1,8 +1,19 @@
 import React, { Component, PropTypes } from 'react';
+import { FaSpinner } from 'react-icons/lib/fa';
 
 import Container from './Container';
 import Article from './Article';
 import Footer from './Footer';
+
+const style = {
+  loading: {
+    color: '#e3051a',
+    paddingTop: 20,
+    paddingBottom: 30,
+    width: '100%',
+    textAlign: 'center',
+  },
+};
 
 export default class ArticlePage extends Component {
 
@@ -31,8 +42,13 @@ export default class ArticlePage extends Component {
 
     // TODO: handle processing for show loader
     let content;
-    if (processing) content = <p>Loading</p>;
-    else if (post) content = <Article full post={post} />;
+    if (processing) {
+      content = (
+        <div style={style.loading}>
+          <FaSpinner size={60} />
+        </div>
+      );
+    } else if (post) content = <Article full post={post} />;
     else content = <p>TODO: No Article Error</p>;
 
     return (
