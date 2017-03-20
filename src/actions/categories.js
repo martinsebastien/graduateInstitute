@@ -26,8 +26,8 @@ export function loadCategories() {
     try {
       const res = await fetch('//graduateinstitute.blackpen.tv/wp-json/wp/v2/categories');
       const data = await res.json();
-      const posts = data.map(generateCategory);
-      return dispach(categoriesLoaded(posts));
+      const categories = data.map(generateCategory);
+      return dispach(categoriesLoaded(categories));
     } catch (e) {
       return dispach(categoriesLoadingFailed(e));
     }
