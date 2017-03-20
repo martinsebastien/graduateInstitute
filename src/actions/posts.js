@@ -1,7 +1,7 @@
 import generatePost from '../models/post';
 
 const POSTS_PER_PAGE = 10;
-const POSTS_ENDPOINT = `//graduateinstitute.blackpen.tv/wp-json/wp/v2/posts?_embed&sticky=false&per_page=${POSTS_PER_PAGE}`;
+const POSTS_ENDPOINT = `//graduateinstitute.blackpen.tv/wp-json/wp/v2/posts?_embed&per_page=${POSTS_PER_PAGE}`;
 
 function postsLoading() {
   return {
