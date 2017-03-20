@@ -27,6 +27,8 @@ export default class InfoPost extends Component {
     }).isRequired,
   };
 
+  state = {};
+
   render() {
     const { author, categories } = this.props.post;
 
@@ -43,13 +45,13 @@ export default class InfoPost extends Component {
 
             <div className="authorDetails">
               <p>Title</p>
-              <p>{this.props.post.author.title}</p>
+              <p>{author.title}</p>
               <p>Email</p>
-              <p>{this.props.post.author.slug}</p>
+              <p>{author.slug}</p>
               <p>Phone</p>
-              <p>{this.props.post.author.phoneNumber}</p>
+              <p>{author.phoneNumber}</p>
               <p>Opening times</p>
-              <p>{this.props.post.author.openingTimes}</p>
+              <p>{author.openingTimes}</p>
             </div>
           </div>
 
