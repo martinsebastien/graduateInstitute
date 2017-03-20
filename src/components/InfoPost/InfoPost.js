@@ -14,11 +14,11 @@ export default class InfoPost extends Component {
       date: PropTypes.instanceOf(Date).isRequired,
       author: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        avatar: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired,
-        phoneNumber: PropTypes.string.isRequired,
-        openingTimes: PropTypes.string.isRequired,
+        avatar: PropTypes.string,
+        title: PropTypes.string,
+        email: PropTypes.string,
+        phoneNumber: PropTypes.string,
+        openingTimes: PropTypes.string,
       }).isRequired,
       thumbnail: PropTypes.shape({
         alt: PropTypes.string.isRequired,
@@ -47,7 +47,7 @@ export default class InfoPost extends Component {
               <p>Title</p>
               <p>{author.title}</p>
               <p>Email</p>
-              <p>{author.slug}</p>
+              <p>{author.email}</p>
               <p>Phone</p>
               <p>{author.phoneNumber}</p>
               <p>Opening times</p>

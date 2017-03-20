@@ -1,12 +1,10 @@
-const noAvatar = 'noAvatar.png';
-
 export default function author(data) {
-  const { name = 'Unknown', description = '' } = data;
-  const avatar = data.acf.avatar || noAvatar;
-  const phoneNumber = data.acf.phone_number;
-  const slug = data.slug;
-  const title = 'Academic Adviser, Direction of Studies';
-  const openingTimes = 'Monday - Friday: 09:00 - 12:00 and 14:00 - 17:00';
+  const { name = null, description = null } = data;
+  const avatar = data.acf.avatar || null;
+  const title = (data.acf && data.acf.title) || null;
+  const email = (data.acf && data.acf.email) || null;
+  const phoneNumber = (data.acf && data.acf.phone_number) || null;
+  const openingTimes = (data.acf && data.acf.opening_times) || null;
 
-  return { name, title, openingTimes, description, avatar, phoneNumber, slug };
+  return { name, description, avatar, title, email, phoneNumber, openingTimes };
 }
