@@ -25,6 +25,7 @@ export default class Article extends Component {
         alt: PropTypes.string.isRequired,
         src: PropTypes.string.isRequired,
       }).isRequired,
+      video: PropTypes.string.isRequired,
     }).isRequired,
   };
 
@@ -72,7 +73,7 @@ export default class Article extends Component {
             :
             <h2><Link to={url} dangerouslySetInnerHTML={{ __html: post.title }} /></h2>
           }
-          <p className="date">{moment(post.date).format('dddd, Do MMMM Y')}</p>
+          <p className="date">{moment(post.date).format('LL')}</p>
           <div className="textContent" dangerouslySetInnerHTML={{ __html: full ? post.content : post.excerpt }} />
           {!full && (<div className="readmore">
             <Link to={url}>

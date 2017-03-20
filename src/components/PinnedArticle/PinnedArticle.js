@@ -40,11 +40,12 @@ export default class PinnedArticle extends Component {
         </div>
         <div className="content">
           <Link to={url}><h2 dangerouslySetInnerHTML={{ __html: post.title }} /></Link>
-          <small>{moment(post.date).format('dddd, Do MMMM Y')}</small>
+          <small>{moment(post.date).format('LL')}</small>
         </div>
         <div className="readmore">
           <Link to={url}>
-            <FaAlignJustify /> READ MORE
+            <FaAlignJustify />
+            READ MORE
           </Link>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import sw from 'serviceworker-webpack-plugin/lib/runtime';
+/*import sw from 'serviceworker-webpack-plugin/lib/runtime';
 
 const publicKey = 'BO3ukuH-qu3m8j491mwFm1_MOKxqNm1dr1jIYrXaO2AJBUR0Qd3MY28FxxSHv8fsXsv0PDKHCLmUX2ckv2Xka2A';
 
@@ -72,3 +72,4 @@ export function notificationUnsubscribe() {
     }
   };
 }
+*/
