@@ -2,6 +2,10 @@
   width: 100%;
   margin-bottom: 40px;
 
+  .readMoreIcon {
+    margin-right: 20px;
+  }
+
   *{
     transition: all 0.4s;
   }
@@ -94,6 +98,7 @@
 
       a {
         color: #e3051a;
+
       }
     }
 

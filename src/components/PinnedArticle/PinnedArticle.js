@@ -44,7 +44,7 @@ export default class PinnedArticle extends Component {
         </div>
         <div className="readmore">
           <Link to={url}>
-            <FaAlignJustify />
+            <FaAlignJustify className="readMoreIcon" />
             READ MORE
           </Link>
         </div>

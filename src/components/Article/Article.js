@@ -77,7 +77,7 @@ export default class Article extends Component {
           <div className="textContent" dangerouslySetInnerHTML={{ __html: full ? post.content : post.excerpt }} />
           {!full && (<div className="readmore">
             <Link to={url}>
-              <FaAlignJustify /> READ MORE
+              <FaAlignJustify className="readMoreIcon" /> READ MORE
             </Link>
           </div>)}
 
