@@ -5,20 +5,25 @@ export class Category {
   public slug: String;
   public description?: String;
 
-  static build({ id, name, slug, description }: any): Category  {
+  static build(data: any): Category  {
+    if (!data) return null;
 
-    try {
-      let c = new Category;
-      c.id = id;
-      c.name = name;
-      c.slug = slug;
-      c.description = description;
-      return c;
+    // Get value
+    const {
+      id,
+      name,
+      slug,
+      description,
+    } = data;
 
-    } catch(e) {
-      return null;
+    // Create category
+    const c = new Category;
+    c.id = id;
+    c.name = name;
+    c.slug = slug;
+    c.description = description;
+    return c;
 
-    }
   }
 
 }

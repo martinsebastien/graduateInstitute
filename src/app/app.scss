@@ -1,4 +1,5 @@
 // http://ionicframework.com/docs/v2/theming/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 
 // App Global Sass
@@ -14,3 +15,16 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.content {
+  background: #b2b2b2;
+}
+
+$colors:	(
+  primary:    #e3051a,
+  tmp: #f8f8f8,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+);

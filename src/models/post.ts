@@ -16,46 +16,49 @@ export class Post {
   public videoUrl: String;
   public linkWeb: String;
   public linkFile: String;
+  public json: any;
 
-  static build({
-    id,
-    slug,
-    date,
-    title: { rendered: title },
-    content: { rendered: content },
-    excerpt: { rendered: excerpt },
-    _embedded: {
-      author: [author],
-      'wp:featuredmedia': [thumbnail],
-      'wp:term': [categories = []],
-    },
-    acf: {
-      video_url,
-      link_web,
-      link_file,
-    },
-  }: any): Post  {
+  static build(data: any): Post  {
 
-    try {
-      let p = new Post;
-      p.id = id;
-      p.title = title;
-      p.slug = slug;
-      p.content = content;
-      p.excerpt = excerpt;
-      p.date = new Date(date);
-      p.author = Author.build(author);
-      p.thumbnail = Thumbnail.build(thumbnail);
-      p.categories = categories.map(category => Category.build(category));
-      p.videoUrl = video_url;
-      p.linkWeb = link_web;
-      p.linkFile = link_file;
-      return p;
+    const {
+      id,
+      slug,
+      date,
+      title: { rendered: title },
+      content: { rendered: content },
+      excerpt: { rendered: excerpt },
+      _embedded: {
+        author: authors = [],
+        'wp:featuredmedia': featuredmedia = [],
+        'wp:term': terms = [],
+      },
+      acf: {
+        video_url,
+        link_web,
+        link_file,
+      },
+    } = data;
 
-    } catch(e) {
-      return null;
+    const [author] = authors;
+    const [thumbnail] = featuredmedia;
+    const [categories = []] = terms;
 
-    }
+    const p = new Post;
+    p.json = data;
+    p.id = id;
+    p.title = title;
+    p.slug = slug;
+    p.content = content;
+    p.excerpt = excerpt;
+    p.date = new Date(date);
+    p.author = Author.build(author);
+    p.thumbnail = Thumbnail.build(thumbnail);
+    p.categories = categories.map(category => Category.build(category));
+    p.videoUrl = video_url;
+    p.linkWeb = link_web;
+    p.linkFile = link_file;
+    return p;
+
   }
 
 }

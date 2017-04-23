@@ -8,33 +8,33 @@ export class Author {
   public phoneNumber: String;
   public openingTimes: String;
 
-  static build({
-    name,
-    description,
-    acf: {
-      avatar,
-      title,
-      email,
-      phone_number,
-      opening_times,
-    },
-  }: any): Author  {
+  static build(data: any): Author  {
+    if (!data) return null;
 
-    try {
-      let a = new Author;
-      a.name = name;
-      a.description = description;
-      a.avatar = avatar;
-      a.title = title;
-      a.email = email;
-      a.phoneNumber = phone_number;
-      a.openingTimes = opening_times;
-      return a;
+    // Get Value
+    const {
+      name,
+      description,
+      acf: {
+        avatar,
+        title,
+        email,
+        phone_number,
+        opening_times,
+      },
+    } = data;
 
-    } catch(e) {
-      return null;
+    // Author object
+    const a = new Author;
+    a.name = name;
+    a.description = description;
+    a.avatar = avatar || 'noavatar.png';
+    a.title = title;
+    a.email = email;
+    a.phoneNumber = phone_number;
+    a.openingTimes = opening_times;
+    return a;
 
-    }
   }
 
 }

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="author">{{author.name}}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">back</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-list *ngIf="author">
+
+  <ion-item *ngIf="author.title">
+    <h2>Title</h2>
+    <p>{{author.title}}</p>
+  </ion-item>
+
+  <ion-item *ngIf="author.email">
+    <h2>Email</h2>
+    <p>{{author.email}}</p>
+  </ion-item>
+
+  <ion-item *ngIf="author.phoneNumber">
+    <h2>Phone</h2>
+    <p>{{author.phoneNumber}}</p>
+  </ion-item>
+
+  <ion-item *ngIf="author.openingTimes">
+    <h2>Opening Times</h2>
+    <p>{{author.openingTimes}}</p>
+  </ion-item>
+
+</ion-list>
+
+</ion-content>

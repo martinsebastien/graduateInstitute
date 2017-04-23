@@ -1,0 +1,28 @@
+gi-header {
+
+  .topheader {
+    display: block;
+    height: 30px;
+    background-color: #fff;
+    margin-bottom: 156px;
+    padding: 0 10px;
+
+    h1 {
+      display: none;
+
+      @media screen and (min-width: 550px) {
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding-right: 10px;
+        float: right;
+        color: color($colors, primary);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 30px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

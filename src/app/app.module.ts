@@ -6,14 +6,25 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { HttpService } from '../services/http.service';
+import { PostsProvider } from '../providers/posts.provider';
+import { CategoriesProvider } from '../providers/categories.provider';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { PostsPage } from '../pages/posts/posts';
+import { PostPage } from '../pages/post/post';
+import { InfoAuthorPage } from '../pages/info-author/info-author';
+
+import { HeaderComponent } from '../components/header/header';
+import { MenuComponent } from '../components/menu/menu';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    PostsPage,
+    PostPage,
+    InfoAuthorPage,
+    HeaderComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +34,11 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    PostsPage,
+    PostPage,
+    InfoAuthorPage,
+    HeaderComponent,
+    MenuComponent,
   ],
   providers: [
     {
@@ -37,6 +52,8 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     HttpService,
+    PostsProvider,
+    CategoriesProvider
   ]
 })
 export class AppModule {}

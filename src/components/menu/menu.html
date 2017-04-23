@@ -1,0 +1,29 @@
+<ion-card>
+  <ion-grid class="header">
+    <ion-row>
+      <ion-col col-12 class="header-search">
+        <ion-input type="text" placeholder="SEARCH"></ion-input>
+        <ion-icon name="search"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 class="header-categories">
+        <div class="header-categories-label" (click)="toggleMenu()">
+          FILTER
+          <ion-icon *ngIf="menuIsOpen" name="arrow-down"></ion-icon>
+          <ion-icon *ngIf="!menuIsOpen" name="arrow-up"></ion-icon>
+        </div>
+        <div *ngIf="menuIsOpen" class="header-categories-content">
+          <ion-list>
+            <ion-item *ngFor="let category of categories">
+              <h2>{{category.name}}</h2>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col col-6 class="header-pushnotification">
+        pushnotification
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
