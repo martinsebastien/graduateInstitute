@@ -1,0 +1,39 @@
+<ion-content>
+  <div *ngIf="post">
+    <ion-card *ngFor="let post of posts">
+      <img *ngIf="post.thumbnail" [src]="post.thumbnail.src" alt="" />
+
+      <ion-card-content>
+        <ion-card-title [innerHtml]="post.title"></ion-card-title>
+        <ion-card-content [innerHtml]="post.content"></ion-card-content>
+      </ion-card-content>
+
+      <ion-row>
+        <!-- Author -->
+        <ion-col *ngIf="post.author">
+          <ion-item (click)="presentAuthorInformation(post.author)">
+            <ion-avatar item-left>
+              <img [src]="post.author.avatar" />
+            </ion-avatar>
+            <h2>{{post.author.name}}</h2>
+            <p>{{post.author.description}}</p>
+          </ion-item>
+        </ion-col>
+
+        <!-- Categories -->
+        <ion-col>
+          <ion-item>
+            <h2>Categories</h2>
+            <p>{{post.categories.join(',')}}</p>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-card>
+  </div>
+
+  <div *ngIf="!post.length">
+  </div>
+
+</ion-content>

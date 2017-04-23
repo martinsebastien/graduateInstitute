@@ -1,0 +1,36 @@
+<ion-card>
+  <ion-grid class="header">
+    <ion-row>
+      <ion-col col-12 class="header-search">
+        <form (submit)="doSearch()">
+          <ion-input type="text" placeholder="SEARCH" name="search" [(ngModel)]="search"></ion-input>
+          <button ion-button icon-only clear type="submit">
+            <ion-icon *ngIf="!isLoading" name="search"></ion-icon>
+            <ion-icon *ngIf="isLoading" name="sync"></ion-icon>
+          </button>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 class="header-categories">
+        <div class="header-categories-label" (click)="toggleMenu()">
+          FILTER
+          <ion-icon *ngIf="menuIsOpen" name="arrow-down"></ion-icon>
+          <ion-icon *ngIf="!menuIsOpen" name="arrow-up"></ion-icon>
+        </div>
+        <div *ngIf="menuIsOpen" class="header-categories-content">
+          <ion-list>
+            <ion-item *ngFor="let category of categories" (click)="toggleCategory(category)">
+              <ion-icon *ngIf="isAnActiveCategory(category)" name="square" item-left></ion-icon>
+              <ion-icon *ngIf="!isAnActiveCategory(category)" name="square-outline" item-left></ion-icon>
+              <h2>{{category.name}}</h2>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col col-6 class="header-pushnotification">
+        pushnotification
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
