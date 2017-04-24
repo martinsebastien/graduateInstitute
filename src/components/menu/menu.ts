@@ -13,8 +13,11 @@ export class MenuComponent implements OnInit {
   public search: string = '';
 
   public menuIsOpen: Boolean = false;
+  public isLoading: Boolean = false;
   public categories: Category[] = [];
+
   public categoriesSubscription: Subscription;
+  public isLoadingSubscription: Subscription;
 
   constructor(
     public categoriesProvider: CategoriesProvider,
@@ -25,10 +28,14 @@ export class MenuComponent implements OnInit {
     this.categoriesSubscription = this.categoriesProvider
       .all()
       .subscribe(categories => this.categories = categories);
+
+    this.isLoadingSubscription = this.appStateProvider.loading$
+      .subscribe(isLoading => this.isLoading = isLoading);
   }
 
   ngOnDestroy() {
     this.categoriesSubscription.unsubscribe();
+    this.isLoadingSubscription.unsubscribe();
   }
 
   toggleMenu(): void {

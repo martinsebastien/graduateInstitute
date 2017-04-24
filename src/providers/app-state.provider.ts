@@ -18,6 +18,7 @@ export class AppStateProvider {
   public perPage: BehaviorSubject<number> = new BehaviorSubject<number>(10);
   public search: BehaviorSubject<String> = new BehaviorSubject<String>('');
   public categories: BehaviorSubject<Category[]> = new BehaviorSubject<Category[]>([]);
+  public loading$: BehaviorSubject<Boolean> = new BehaviorSubject<Boolean>(false);
 
   private _posts: Post[] = [];
 
@@ -34,9 +35,11 @@ export class AppStateProvider {
       this.categories,
     )
       .do(data => console.log(data))
-      .do(([page]) => page == 1 && (this._posts = []))
+      .do(() => this.loading$.next(true))
+      .do(([page]) => page === 1 && (this._posts = []))
       .switchMap(([page, perPage, search, categories]) => this.postsProvider.filter(search, categories, page, perPage))
-      .map(posts => this._posts = this._posts.concat(posts));
+      .map(posts => this._posts = this._posts.concat(posts))
+      .do(() => this.loading$.next(false));
   }
 
   loadMore(): void {

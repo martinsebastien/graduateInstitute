@@ -16,9 +16,11 @@ export class PostsPage {
 
   public posts: Post[] = [];
   public pinnedPosts: Post[] = [];
+  public isLoading: Boolean = false;
 
   private postsSubscription: Subscription;
   private pinnedPostsSubscription: Subscription;
+  private isLoadingSubscription: Subscription;
 
   constructor(
     public navCtrl: NavController,
@@ -31,11 +33,13 @@ export class PostsPage {
     // Load posts
     this.postsSubscription = this.appStateProvider.posts.subscribe(posts => this.posts = posts);
     this.pinnedPostsSubscription = this.postsProvider.pinned().subscribe((posts) => this.pinnedPosts = posts);
+    this.isLoadingSubscription = this.appStateProvider.loading$.subscribe(isLoading => this.isLoading = isLoading);
   }
 
   ionViewWillUnload() {
     this.postsSubscription.unsubscribe();
     this.pinnedPostsSubscription.unsubscribe();
+    this.isLoadingSubscription.unsubscribe();
   }
 
   categories(categories: Category[]): String {
