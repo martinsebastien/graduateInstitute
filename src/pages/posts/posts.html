@@ -4,7 +4,7 @@
 
   <div *ngIf="pinnedPosts.length">
 
-    <h2>Pinned Articles</h2>
+    <h3>Pinned Articles</h3>
 
     <ion-list>
 
@@ -22,14 +22,14 @@
 
   <div *ngIf="posts.length">
 
-    <h2>Articles</h2>
-
+    <h3>All articles</h3>
     <ion-card *ngFor="let post of posts">
       <img *ngIf="post.thumbnail" [src]="post.thumbnail.src" alt="" />
+      <img *ngIf="post.video" [src]="post.video.src" alt="" />
 
       <ion-card-content>
         <ion-card-title [innerHtml]="post.title"></ion-card-title>
-        <ion-card-content [innerHtml]="post.content"></ion-card-content>
+        <ion-card-content class="noPadding" [innerHtml]="post.content"></ion-card-content>
       </ion-card-content>
 
       <ion-row>

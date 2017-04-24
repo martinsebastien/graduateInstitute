@@ -15,8 +15,8 @@
       <ion-col col-6 class="header-categories">
         <div class="header-categories-label" (click)="toggleMenu()">
           FILTER
-          <ion-icon *ngIf="menuIsOpen" name="arrow-down"></ion-icon>
-          <ion-icon *ngIf="!menuIsOpen" name="arrow-up"></ion-icon>
+          <ion-icon *ngIf="menuIsOpen" name="md-arrow-dropup"></ion-icon>
+          <ion-icon *ngIf="!menuIsOpen" name="md-arrow-dropdown"></ion-icon>
         </div>
         <div *ngIf="menuIsOpen" class="header-categories-content">
           <ion-list>
