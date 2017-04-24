@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpService } from '../services/http.service';
 import { PostsProvider } from '../providers/posts.provider';
 import { CategoriesProvider } from '../providers/categories.provider';
+import { AppStateProvider } from '../providers/app-state.provider';
 
 import { MyApp } from './app.component';
 import { PostsPage } from '../pages/posts/posts';
@@ -53,7 +54,8 @@ import { MenuComponent } from '../components/menu/menu';
     SplashScreen,
     HttpService,
     PostsProvider,
-    CategoriesProvider
+    CategoriesProvider,
+    AppStateProvider,
   ]
 })
 export class AppModule {}

@@ -28,7 +28,7 @@ export class Author {
     const a = new Author;
     a.name = name;
     a.description = description;
-    a.avatar = avatar || 'noavatar.png';
+    a.avatar = avatar || 'assets/noavatar.png';
     a.title = title;
     a.email = email;
     a.phoneNumber = phone_number;

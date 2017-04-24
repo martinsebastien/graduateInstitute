@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
-import { PostsProvider, Post, Author, Category } from '../../providers/posts.provider';
+import { AppStateProvider, Post, Author, Category } from '../../providers/app-state.provider';
 
 import { PostPage } from '../post/post';
 import { InfoAuthorPage } from '../info-author/info-author';
@@ -20,14 +20,12 @@ export class PostsPage {
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
-    public postsProvider: PostsProvider,
+    public appStateProvider: AppStateProvider,
   ) {}
 
   ionViewWillLoad() {
     // Load posts
-    this.postsSubscription = this.postsProvider
-      .all()
-      .subscribe(posts => this.posts = posts);
+    this.postsSubscription = this.appStateProvider.posts.subscribe(posts => this.posts = posts);
   }
 
   ionViewWillUnload() {
@@ -48,10 +46,7 @@ export class PostsPage {
   }
 
   doInfinite(infiniteScroll) {
-    console.log('infinite scroll');
-    setTimeout(() => {
-      infiniteScroll.complete();
-    },3000);
+    infiniteScroll.complete();
   }
 
 }

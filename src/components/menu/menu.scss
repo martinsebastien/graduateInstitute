@@ -25,13 +25,15 @@ gi-menu {
         margin: 0;
       }
 
-      ion-icon {
+      button {
         position: absolute;
         top: 15px;
         right: 15px;
         width: 20px;
         height: 20px;
         cursor: pointer;
+        color: #030303;
+        margin: 0;
       }
     }
 
@@ -59,6 +61,10 @@ gi-menu {
         position: absolute;
         top: 100%;
         left: 0;
+
+        ion-item {
+          cursor: pointer;
+        }
       }
     }
 

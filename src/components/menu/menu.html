@@ -2,8 +2,12 @@
   <ion-grid class="header">
     <ion-row>
       <ion-col col-12 class="header-search">
-        <ion-input type="text" placeholder="SEARCH"></ion-input>
-        <ion-icon name="search"></ion-icon>
+        <form (submit)="doSearch()">
+          <ion-input type="text" placeholder="SEARCH" name="search" [(ngModel)]="search"></ion-input>
+          <button ion-button icon-only clear type="submit">
+            <ion-icon name="search"></ion-icon>
+          </button>
+        </form>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -15,7 +19,9 @@
         </div>
         <div *ngIf="menuIsOpen" class="header-categories-content">
           <ion-list>
-            <ion-item *ngFor="let category of categories">
+            <ion-item *ngFor="let category of categories" (click)="toggleCategory(category)">
+              <ion-icon *ngIf="isAnActiveCategory(category)" name="square" item-left></ion-icon>
+              <ion-icon *ngIf="!isAnActiveCategory(category)" name="square-outline" item-left></ion-icon>
               <h2>{{category.name}}</h2>
             </ion-item>
           </ion-list>

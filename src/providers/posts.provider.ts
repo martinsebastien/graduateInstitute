@@ -25,6 +25,26 @@ export class PostsProvider {
       .map(posts => posts.map(post => Post.build(post)));
   }
 
+  filter(search?: String, categories: Category[] = [], page: Number = 1, perPage: Number = 10) {
+
+    // Base
+    let endpoint = '/posts?_embed';
+
+    // Page
+    endpoint += `&perPage=${perPage}&page=${page}`;
+
+    // Search
+    if (search) endpoint += `&search=${search}`;
+
+    // Categories
+    if (categories.length) endpoint += `&categories=${categories.map(category => category.id).join(',')}`;
+
+    return this.httpService
+      .get(encodeURI(endpoint))
+      .map(data => data.json())
+      .map(posts => posts.map(post => Post.build(post)));
+  }
+
   get(id: string): Observable<Post> {
     return this.httpService
       .get(`/posts/${id}?_embed`)

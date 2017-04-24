@@ -5,12 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: 'header.html',
 
 })
-export class HeaderComponent {
-
-  ionViewWillLoad() {
-  }
-
-  ionViewWillUnload() {
-  }
-
-}
+export class HeaderComponent {}
