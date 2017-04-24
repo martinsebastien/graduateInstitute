@@ -3,6 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 
 import { AppStateProvider, Post, Author, Category } from '../../providers/app-state.provider';
+import { PostsProvider } from '../../providers/posts.provider';
 
 import { PostPage } from '../post/post';
 import { InfoAuthorPage } from '../info-author/info-author';
@@ -14,22 +15,27 @@ import { InfoAuthorPage } from '../info-author/info-author';
 export class PostsPage {
 
   public posts: Post[] = [];
+  public pinnedPosts: Post[] = [];
 
   private postsSubscription: Subscription;
+  private pinnedPostsSubscription: Subscription;
 
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
     public appStateProvider: AppStateProvider,
+    public postsProvider: PostsProvider,
   ) {}
 
   ionViewWillLoad() {
     // Load posts
     this.postsSubscription = this.appStateProvider.posts.subscribe(posts => this.posts = posts);
+    this.pinnedPostsSubscription = this.postsProvider.pinned().subscribe((posts) => this.pinnedPosts = posts);
   }
 
   ionViewWillUnload() {
     this.postsSubscription.unsubscribe();
+    this.pinnedPostsSubscription.unsubscribe();
   }
 
   categories(categories: Category[]): String {
@@ -46,7 +52,7 @@ export class PostsPage {
   }
 
   doInfinite(infiniteScroll) {
-    infiniteScroll.complete();
+    this.appStateProvider.loadMore();
   }
 
 }

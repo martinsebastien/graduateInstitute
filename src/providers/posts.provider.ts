@@ -25,6 +25,13 @@ export class PostsProvider {
       .map(posts => posts.map(post => Post.build(post)));
   }
 
+  pinned(): Observable<Post[]> {
+    return this.httpService
+      .get('/posts?_embed&sticky=true')
+      .map(data => data.json())
+      .map(posts => posts.map(post => Post.build(post)));
+  }
+
   filter(search?: String, categories: Category[] = [], page: Number = 1, perPage: Number = 10) {
 
     // Base
