@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 
 import { AppStateProvider, Post, Author, Category } from '../../providers/app-state.provider';
 import { PostsProvider } from '../../providers/posts.provider';
-import moment from 'moment';
 
 import { PostPage } from '../post/post';
 import { InfoAuthorPage } from '../info-author/info-author';
@@ -18,11 +17,15 @@ export class PostsPage {
 
   public posts: Post[] = [];
   public pinnedPosts: Post[] = [];
+  public categories: Category[] = [];
+  public search: String = '';
   public isLoading: Boolean = false;
 
   private postsSubscription: Subscription;
   private pinnedPostsSubscription: Subscription;
   private isLoadingSubscription: Subscription;
+  private searchSubscription: Subscription;
+  private categoriesSubscription: Subscription;
 
   constructor(
     public navCtrl: NavController,
@@ -33,10 +36,11 @@ export class PostsPage {
 
   ionViewWillLoad() {
     // Load posts
-    console.log(moment().format('LL'));
     this.postsSubscription = this.appStateProvider.posts.subscribe(posts => this.posts = posts);
     this.pinnedPostsSubscription = this.postsProvider.pinned().subscribe((posts) => this.pinnedPosts = posts);
     this.isLoadingSubscription = this.appStateProvider.loading$.subscribe(isLoading => this.isLoading = isLoading);
+    this.searchSubscription = this.appStateProvider.search.subscribe(search => this.search = search);
+    this.categoriesSubscription = this.appStateProvider.categories.subscribe(categories => this.categories = categories);
   }
 
   ionViewWillUnload() {
@@ -45,7 +49,7 @@ export class PostsPage {
     this.isLoadingSubscription.unsubscribe();
   }
 
-  categories(categories: Category[]): String {
+  flatCategories(categories: Category[]): String {
     return categories.map(category => category.name).join(', ');
   }
 
@@ -60,10 +64,6 @@ export class PostsPage {
 
   doInfinite(infiniteScroll) {
     this.appStateProvider.loadMore();
-  }
-
-  convertDate({ date }: Post): string{
-    return moment(date).format('LL');
   }
 
 }

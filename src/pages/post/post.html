@@ -1,39 +1,42 @@
 <ion-content>
+
+  <gi-header></gi-header>
+
   <div *ngIf="post">
-    <ion-card *ngFor="let post of posts">
+    <ion-card>
       <img *ngIf="post.thumbnail" [src]="post.thumbnail.src" alt="" />
+      <img *ngIf="post.video" [src]="post.video.src" alt="" />
 
       <ion-card-content>
         <ion-card-title [innerHtml]="post.title"></ion-card-title>
-        <ion-card-content [innerHtml]="post.content"></ion-card-content>
+        <h4 class="dateTitleArticles">{{post.date | date}}</h4>
+        <ion-card-content class="noPadding" [innerHtml]="post.content"></ion-card-content>
       </ion-card-content>
 
       <ion-row>
         <!-- Author -->
         <ion-col *ngIf="post.author">
-          <ion-item (click)="presentAuthorInformation(post.author)">
+          <ion-item (click)="presentAuthorInformation(post.author)" class="authorInfo">
             <ion-avatar item-left>
-              <img [src]="post.author.avatar" />
+              <img [src]="post.author.avatar" class="avatar" />
             </ion-avatar>
-            <h2>{{post.author.name}}</h2>
-            <p>{{post.author.description}}</p>
+            <h5>Posted by</h5>
+            <p>{{post.author.name}}, {{post.author.description}}</p>
+            <h5>Categories</h5>
+            <p>{{categories(post.categories)}}</p>
           </ion-item>
         </ion-col>
-
-        <!-- Categories -->
-        <ion-col>
-          <ion-item>
-            <h2>Categories</h2>
-            <p>{{post.categories.join(',')}}</p>
-          </ion-item>
-        </ion-col>
-
       </ion-row>
 
     </ion-card>
   </div>
 
-  <div *ngIf="!post.length">
+  <div *ngIf="!post">
+    <ion-card>
+      <ion-card-content>
+        <p>Article is loading</p>
+      </ion-card-content>
+    </ion-card>
   </div>
 
 </ion-content>

@@ -2,18 +2,18 @@
 
   <gi-header></gi-header>
 
-  <div *ngIf="pinnedPosts.length">
+  <div *ngIf="pinnedPosts.length && !search && !categories.length">
 
     <h3>Pinned Articles</h3>
 
     <ion-list>
 
-      <ion-item *ngFor="let post of pinnedPosts" class="pinned">
+      <ion-item *ngFor="let post of pinnedPosts" class="pinned" (click)="showPost(post)" tappable>
         <ion-thumbnail item-left class="thumb">
           <img [src]="post.thumbnail.src" [alt]="post.thumbnail.alt" />
         </ion-thumbnail>
-        <h2>{{post.title}}</h2>
-        <h4>{{convertDate(post.date)}}</h4>
+        <h2 [innerHtml]="post.title"></h2>
+        <h4>{{post.date | date}}</h4>
         <button ion-button clear item-right><ion-icon name="md-list" class="iconSpace"></ion-icon>MORE</button>
       </ion-item>
 
@@ -24,14 +24,14 @@
   <div *ngIf="posts.length">
 
     <h3>All articles</h3>
-    <ion-card *ngFor="let post of posts">
+    <ion-card *ngFor="let post of posts" (click)="showPost(post)" tappable>
       <img *ngIf="post.thumbnail" [src]="post.thumbnail.src" alt="" />
       <img *ngIf="post.video" [src]="post.video.src" alt="" />
 
       <ion-card-content>
         <ion-card-title [innerHtml]="post.title"></ion-card-title>
-        <h4 class="dateTitleArticles">{{convertDate(post.date)}}</h4>
-        <ion-card-content class="noPadding" [innerHtml]="post.content"></ion-card-content>
+        <h4 class="dateTitleArticles">{{post.date | date}}</h4>
+        <ion-card-content class="noPadding" [innerHtml]="post.excerpt"></ion-card-content>
       </ion-card-content>
 
       <ion-row>
@@ -44,7 +44,7 @@
             <h5>Posted by</h5>
             <p>{{post.author.name}}, {{post.author.description}}</p>
             <h5>Categories</h5>
-            <p>{{categories(post.categories)}}</p>
+            <p>{{flatCategories(post.categories)}}</p>
           </ion-item>
         </ion-col>
       </ion-row>

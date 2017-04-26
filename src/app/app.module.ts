@@ -48,7 +48,7 @@ import { MenuComponent } from '../components/menu/menu';
     },
     {
       provide: LOCALE_ID,
-      useValue: 'fr-CH',
+      useValue: 'en-US',
     },
     StatusBar,
     SplashScreen,

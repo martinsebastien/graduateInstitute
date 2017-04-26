@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 
 import { Post } from '../models/post';
@@ -19,6 +19,7 @@ export class AppStateProvider {
   public search: BehaviorSubject<String> = new BehaviorSubject<String>('');
   public categories: BehaviorSubject<Category[]> = new BehaviorSubject<Category[]>([]);
   public loading$: BehaviorSubject<Boolean> = new BehaviorSubject<Boolean>(false);
+  public onPostsChange$: Subject<void> = new Subject<void>();
 
   private _posts: Post[] = [];
 
@@ -34,8 +35,8 @@ export class AppStateProvider {
       this.search,
       this.categories,
     )
-      .do(data => console.log(data))
       .do(() => this.loading$.next(true))
+      .do(() => this.onPostsChange$.next())
       .do(([page]) => page === 1 && (this._posts = []))
       .switchMap(([page, perPage, search, categories]) => this.postsProvider.filter(search, categories, page, perPage))
       .map(posts => this._posts = this._posts.concat(posts))
