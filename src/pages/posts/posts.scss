@@ -4,6 +4,7 @@ page-posts {
     margin: 10px;
     padding: 0px;
     width: auto;
+    border-radius: 2px;
 
     .iconSpace {
       margin-right: 10px;
@@ -11,6 +12,7 @@ page-posts {
 
     .thumb {
       width: 100px;
+      height: 70px;
       overflow: hidden;
       margin: 0px;
       margin-right: 20px;
@@ -20,6 +22,7 @@ page-posts {
 
       img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
       }
     }
@@ -77,14 +80,14 @@ page-posts {
      h2 {
       text-transform: uppercase;
       font-family: 'Open Sans Condensed', sans-serif;
-      font-size: 12px;
+      font-size: 14px !important;
      }
 
      h4 {
       font-family: 'Open Sans', sans-serif;
       color: #e3051a;
-      font-size: 12px;
-      margin-top: 8px !important;
+      font-size: 12px !important;
+      margin-top: 7px !important;
      }
 
      .button-inner {
@@ -100,6 +103,23 @@ page-posts {
 
   .authorInfo{
     border-top: 1px solid #dadada;
+  }
+
+  .avatar {
+    width: 55px !important;
+    height: 55px !important;
+  }
+
+  .col {
+    padding: 5px 0 5px 0;
+  }
+
+  .dateTitleArticles{
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 800;
+      color: #e3051a;
+      font-size: 12 !important;
+      margin-bottom: 35px;
   }
 
 }

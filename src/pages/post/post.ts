@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { Subscription } from 'rxjs';
+import * as Moment from 'moment';
 
 import { PostsProvider, Post, Author } from '../../providers/posts.provider';
 

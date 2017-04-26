@@ -5,7 +5,7 @@
         <form (submit)="doSearch()">
           <ion-input type="text" placeholder="SEARCH" name="search" [(ngModel)]="search"></ion-input>
           <button ion-button icon-only clear type="submit">
-            <ion-icon *ngIf="!isLoading" name="search"></ion-icon>
+            <ion-icon *ngIf="!isLoading" name="search" class="searchIcon"></ion-icon>
             <ion-icon *ngIf="isLoading" name="sync"></ion-icon>
           </button>
         </form>

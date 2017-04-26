@@ -13,8 +13,8 @@
           <img [src]="post.thumbnail.src" [alt]="post.thumbnail.alt" />
         </ion-thumbnail>
         <h2>{{post.title}}</h2>
-        <h4>{{post.date}}</h4>
-        <button ion-button clear item-right><ion-icon name="md-list" class="iconSpace"></ion-icon>READ MORE</button>
+        <h4>{{convertDate(post.date)}}</h4>
+        <button ion-button clear item-right><ion-icon name="md-list" class="iconSpace"></ion-icon>MORE</button>
       </ion-item>
 
     </ion-list>
@@ -30,6 +30,7 @@
 
       <ion-card-content>
         <ion-card-title [innerHtml]="post.title"></ion-card-title>
+        <h4 class="dateTitleArticles">{{convertDate(post.date)}}</h4>
         <ion-card-content class="noPadding" [innerHtml]="post.content"></ion-card-content>
       </ion-card-content>
 
@@ -38,7 +39,7 @@
         <ion-col *ngIf="post.author">
           <ion-item (click)="presentAuthorInformation(post.author)" class="authorInfo">
             <ion-avatar item-left>
-              <img [src]="post.author.avatar" />
+              <img [src]="post.author.avatar" class="avatar" />
             </ion-avatar>
             <h5>Posted by</h5>
             <p>{{post.author.name}}, {{post.author.description}}</p>

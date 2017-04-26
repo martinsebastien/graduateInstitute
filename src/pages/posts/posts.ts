@@ -4,9 +4,11 @@ import { Subscription } from 'rxjs';
 
 import { AppStateProvider, Post, Author, Category } from '../../providers/app-state.provider';
 import { PostsProvider } from '../../providers/posts.provider';
+import moment from 'moment';
 
 import { PostPage } from '../post/post';
 import { InfoAuthorPage } from '../info-author/info-author';
+
 
 @Component({
   selector: 'page-posts',
@@ -31,6 +33,7 @@ export class PostsPage {
 
   ionViewWillLoad() {
     // Load posts
+    console.log(moment().format('LL'));
     this.postsSubscription = this.appStateProvider.posts.subscribe(posts => this.posts = posts);
     this.pinnedPostsSubscription = this.postsProvider.pinned().subscribe((posts) => this.pinnedPosts = posts);
     this.isLoadingSubscription = this.appStateProvider.loading$.subscribe(isLoading => this.isLoading = isLoading);
@@ -57,6 +60,10 @@ export class PostsPage {
 
   doInfinite(infiniteScroll) {
     this.appStateProvider.loadMore();
+  }
+
+  convertDate({ date }: Post): string{
+    return moment(date).format('LL');
   }
 
 }
