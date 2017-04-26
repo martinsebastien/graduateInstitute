@@ -1,5 +1,39 @@
 gi-menu {
 
+  .category {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+  }
+
+  .selectedItem {
+    width: 15px;
+    height: 15px;
+    background: #e3051a;
+    margin-right: 20px !important;
+
+    &:after {
+      display: block;
+      content: '';
+      position: absolute;
+      left: 25px;
+      top: 50%;
+      width: 8px;
+      height: 4px;
+      margin-top: -4px;
+      margin-left: -5px;
+      border-bottom: solid 2px white;
+      border-left: solid 2px white;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .unselectedItem {
+    width: 15px;
+    height: 15px;
+    background: #a7a7a7;
+    margin-right: 20px !important;
+  }
+
   ion-card {
     overflow: visible;
   }
