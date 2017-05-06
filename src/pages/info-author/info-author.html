@@ -20,12 +20,12 @@
 
   <ion-item *ngIf="author.email">
     <h2>Email</h2>
-    <p>{{author.email}}</p>
+    <p><a [href]="'mailto:' + author.email">{{author.email}}</a></p>
   </ion-item>
 
   <ion-item *ngIf="author.phoneNumber">
     <h2>Phone</h2>
-    <p>{{author.phoneNumber}}</p>
+    <p><a [href]="'tel:' + author.phoneNumber">{{author.phoneNumber}}</a></p>
   </ion-item>
 
   <ion-item *ngIf="author.openingTimes">
