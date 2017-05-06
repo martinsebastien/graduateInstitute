@@ -17,6 +17,7 @@ import { InfoAuthorPage } from '../pages/info-author/info-author';
 
 import { HeaderComponent } from '../components/header/header';
 import { MenuComponent } from '../components/menu/menu';
+import { BackComponent } from '../components/back/back';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MenuComponent } from '../components/menu/menu';
     InfoAuthorPage,
     HeaderComponent,
     MenuComponent,
+    BackComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { MenuComponent } from '../components/menu/menu';
     InfoAuthorPage,
     HeaderComponent,
     MenuComponent,
+    BackComponent,
   ],
   providers: [
     {

@@ -2,12 +2,10 @@
   <ion-grid class="header">
     <ion-row>
       <ion-col col-12 class="header-search">
-        <form (submit)="doSearch()">
-          <ion-input type="text" placeholder="SEARCH" name="search" [(ngModel)]="search"></ion-input>
-          <button ion-button icon-only clear type="submit">
-            <ion-icon *ngIf="!isLoading" name="search" class="searchIcon"></ion-icon>
-            <ion-icon *ngIf="isLoading" name="sync"></ion-icon>
-          </button>
+        <form (submit)="doSearch($event)">
+          <ion-input type="text" placeholder="SEARCH" name="search"></ion-input>
+          <button ion-button icon-only clear *ngIf="!isLoading" type="submit"><ion-icon name="search"></ion-icon></button>
+          <button ion-button icon-only clear *ngIf="isLoading"><ion-icon name="sync"></ion-icon></button>
         </form>
       </ion-col>
     </ion-row>

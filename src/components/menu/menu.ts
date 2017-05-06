@@ -10,15 +10,12 @@ import { AppStateProvider } from '../../providers/app-state.provider';
 })
 export class MenuComponent implements OnInit {
 
-  public search: String = '';
-
   public menuIsOpen: Boolean = false;
   public isLoading: Boolean = false;
   public categories: Category[] = [];
 
   public categoriesSubscription: Subscription;
   public isLoadingSubscription: Subscription;
-  public searchSubscription: Subscription;
 
   constructor(
     public categoriesProvider: CategoriesProvider,
@@ -32,14 +29,11 @@ export class MenuComponent implements OnInit {
 
     this.isLoadingSubscription = this.appStateProvider.loading$
       .subscribe(isLoading => this.isLoading = isLoading);
-
-    this.searchSubscription = this.appStateProvider.search.subscribe(search => this.search = search);
   }
 
   ngOnDestroy() {
     this.categoriesSubscription.unsubscribe();
     this.isLoadingSubscription.unsubscribe();
-    this.searchSubscription.unsubscribe();
   }
 
   toggleMenu(): void {
@@ -56,8 +50,9 @@ export class MenuComponent implements OnInit {
     return !!this.appStateProvider.categories.getValue().filter(c => c.id === category.id).length
   }
 
-  doSearch(): void {
-    this.appStateProvider.search.next(this.search);
+  doSearch(e) {
+    const search = e.target.search.value;
+    this.appStateProvider.search.next(search);
   }
 
 }

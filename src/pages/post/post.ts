@@ -18,7 +18,6 @@ export class PostPage {
 
   private postSubscription: Subscription;
   private isLoadingSubscription: Subscription;
-  private onPostsChangeSubscription: Subscription;
 
   constructor(
     public params: NavParams,
@@ -40,11 +39,6 @@ export class PostPage {
     this.isLoadingSubscription = this.appStateProvider
       .loading$
       .subscribe(isLoading => this.isLoading = isLoading);
-
-      // Load onPostsChange
-      this.onPostsChangeSubscription = this.appStateProvider
-        .onPostsChange$
-        .subscribe(() => this.navCtrl.popToRoot());
   }
 
   categories(categories: Category[]): String {
@@ -54,7 +48,6 @@ export class PostPage {
   ionViewWillUnload() {
     this.postSubscription.unsubscribe();
     this.isLoadingSubscription.unsubscribe();
-    this.onPostsChangeSubscription.unsubscribe();
   }
 
   presentAuthorInformation(author: Author): void {
