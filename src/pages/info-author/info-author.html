@@ -30,7 +30,7 @@
 
   <ion-item *ngIf="author.openingTimes">
     <h2>Opening Times</h2>
-    <p>{{author.openingTimes}}</p>
+    <p [innerHtml]="author.openingTimes"></p>
   </ion-item>
 
 </ion-list>
