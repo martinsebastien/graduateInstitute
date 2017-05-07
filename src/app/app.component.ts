@@ -13,6 +13,10 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
+      let msieCheck = window.navigator.userAgent;
+      let msie = msieCheck.indexOf("MSIE ");
+
+      msie > 0 && alert("You are using an outdated browser. Try downloading Chrome or Firefox.")
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
