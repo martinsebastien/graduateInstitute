@@ -37,4 +37,8 @@ export class Author {
 
   }
 
+  hasNoInformations(): boolean {
+    return !this.title && !this.email && !this.phoneNumber && !this.openingTimes;
+  }
+
 }

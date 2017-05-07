@@ -13,6 +13,10 @@
 
 <ion-list *ngIf="author">
 
+  <ion-item *ngIf="author.hasNoInformations()">
+    <p>Aucune informations</p>
+  </ion-item>
+
   <ion-item *ngIf="author.title">
     <h2>Title</h2>
     <p>{{author.title}}</p>
