@@ -29,3 +29,7 @@ $colors:	(
   light:      #f4f4f4,
   dark:       #222,
 );
+
+.old-browser-toast .toast-wrapper {
+  background: color($colors, danger);
+}
