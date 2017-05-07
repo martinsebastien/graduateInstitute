@@ -7,9 +7,10 @@ import { HttpService } from '../services/http.service';
 import { Author } from '../models/author';
 import { Category } from '../models/category';
 import { Thumbnail } from '../models/thumbnail';
+import { Comment } from '../models/comment';
 import { Post } from '../models/post';
 
-export { Author, Category, Thumbnail, Post };
+export { Author, Category, Thumbnail, Comment, Post };
 
 @Injectable()
 export class PostsProvider {

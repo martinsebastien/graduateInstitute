@@ -1,6 +1,7 @@
 import { Author } from './author';
 import { Thumbnail } from './thumbnail';
 import { Category }  from './category';
+import { Comment } from './comment';
 
 export class Post {
 
@@ -13,9 +14,11 @@ export class Post {
   public author: Author;
   public thumbnail: Thumbnail;
   public categories: Category[];
+  public comments: Comment[];
   public videoUrl: String;
   public linkWeb: String;
   public linkFile: String;
+  public commentOpen: boolean;
   public json: any;
 
   static build(data: any): Post  {
@@ -24,10 +27,12 @@ export class Post {
       id,
       slug,
       date,
+      comment_status,
       title: { rendered: title },
       content: { rendered: content },
       excerpt: { rendered: excerpt },
       _embedded: {
+        replies = [],
         author: authors = [],
         'wp:featuredmedia': featuredmedia = [],
         'wp:term': terms = [],
@@ -42,6 +47,7 @@ export class Post {
     const [author] = authors;
     const [thumbnail] = featuredmedia;
     const [categories = []] = terms;
+    const [comments = []] = replies;
 
     const p = new Post;
     p.json = data;
@@ -54,9 +60,11 @@ export class Post {
     p.author = Author.build(author);
     p.thumbnail = Thumbnail.build(thumbnail);
     p.categories = categories.map(category => Category.build(category));
+    p.comments = comments.map(comment => Comment.build(comment));
     p.videoUrl = video_url;
     p.linkWeb = link_web;
     p.linkFile = link_file;
+    p.commentOpen = comment_status == 'open';
     return p;
 
   }

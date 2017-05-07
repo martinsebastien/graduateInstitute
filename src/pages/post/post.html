@@ -30,6 +30,14 @@
       </ion-row>
 
     </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <p *ngIf="post.commentOpen"></p>
+        <p *ngIf="!post.commentOpen"><i>Comments are disabled for this article.</i></p>
+      </ion-card-content>
+    </ion-card>
+
   </div>
 
   <div *ngIf="!post">
