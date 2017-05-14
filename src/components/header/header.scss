@@ -1,4 +1,4 @@
-gi-header {
+gi-header { 
   .bg {
     width: 100%;
     filter: grayscale(100%);
@@ -29,7 +29,16 @@ gi-header {
     padding: 0 10px;
 
     h1 {
-      display: none;
+      position: absolute;
+      right: 10px;
+      top: 0px;
+      margin-top: 0px;
+      color: color($colors, primary);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 30px;
+      text-transform: uppercase;
 
       @media screen and (min-width: 550px) {
         display: block;
@@ -37,12 +46,6 @@ gi-header {
         padding: 0;
         padding-right: 10px;
         float: right;
-        color: color($colors, primary);
-        font-family: 'Open Sans', sans-serif;
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 30px;
-        text-transform: uppercase;
       }
     }
   }
