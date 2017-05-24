@@ -1,0 +1,31 @@
+<form (submit)="doSearch($event)">
+  <ion-input #search type="text" placeholder="SEARCH" name="search"></ion-input>
+  <button
+    *ngIf="loading$ | async"
+    ion-button
+    icon-only
+    clear
+    type="button"
+  >
+    <ion-spinner name="ios"></ion-spinner>
+  </button>
+  <button
+    [hidden]="(loading$ | async) || (dirty$ | async)"
+    ion-button
+    icon-only
+    clear
+    type="submit"
+  >
+    <ion-icon name="search"></ion-icon>
+  </button>
+  <button
+    *ngIf="!(loading$ | async) && (dirty$ | async)"
+    ion-button
+    icon-only
+    clear
+    type="button"
+    (click)="undoSearch($event)"
+  >
+    <ion-icon name="backspace"></ion-icon>
+  </button>
+</form>

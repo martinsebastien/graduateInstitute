@@ -37,17 +37,14 @@ export class Post {
         'wp:featuredmedia': featuredmedia = [],
         'wp:term': terms = [],
       },
-      acf: {
-        video_url,
-        link_web,
-        link_file,
-      },
+      acf,
     } = data;
 
     const [author] = authors;
     const [thumbnail] = featuredmedia;
     const [categories = []] = terms;
     const [comments = []] = replies;
+    const { video_url = null, link_web = null, link_file = null } = acf;
 
     const p = new Post;
     p.json = data;
@@ -67,6 +64,10 @@ export class Post {
     p.commentOpen = comment_status == 'open';
     return p;
 
+  }
+
+  flatCategories(separator = ', ') {
+    return this.categories.map(c => c.name).join(separator);
   }
 
 }

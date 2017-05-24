@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'gi-back',
-  templateUrl: 'back.html',
+  templateUrl: 'back.html'
 })
 export class BackComponent {
 

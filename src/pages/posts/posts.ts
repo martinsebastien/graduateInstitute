@@ -1,69 +1,50 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
-import { Subscription } from 'rxjs';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PostsProvider, Post } from '../../providers/posts/posts';
+import { FeedProvider } from '../../providers/feed/feed';
+import { Observable } from 'rxjs';
 
-import { AppStateProvider, Post, Author, Category } from '../../providers/app-state.provider';
-import { PostsProvider } from '../../providers/posts.provider';
-
-import { PostPage } from '../post/post';
-import { InfoAuthorPage } from '../info-author/info-author';
-
-
+@IonicPage()
 @Component({
   selector: 'page-posts',
-  templateUrl: 'posts.html'
+  templateUrl: 'posts.html',
 })
 export class PostsPage {
 
-  public posts: Post[] = [];
-  public pinnedPosts: Post[] = [];
-  public categories: Category[] = [];
-  public search: String = '';
-  public isLoading: Boolean = false;
-
-  private postsSubscription: Subscription;
-  private pinnedPostsSubscription: Subscription;
-  private isLoadingSubscription: Subscription;
-  private searchSubscription: Subscription;
-  private categoriesSubscription: Subscription;
+  public posts$: Observable<Post[]>;
+  public pinnedPosts$: Observable<Post[]>;
+  public dirty$: Observable<boolean>;
+  public feedLoading$: Observable<boolean>;
+  public noMorePage$: Observable<boolean>;
 
   constructor(
     public navCtrl: NavController,
-    public modalCtrl: ModalController,
-    public appStateProvider: AppStateProvider,
+    public navParams: NavParams,
     public postsProvider: PostsProvider,
-  ) {}
-
-  ionViewWillLoad() {
-    // Load posts
-    this.postsSubscription = this.appStateProvider.posts.subscribe(posts => this.posts = posts);
-    this.pinnedPostsSubscription = this.postsProvider.pinned().subscribe((posts) => this.pinnedPosts = posts);
-    this.isLoadingSubscription = this.appStateProvider.loading$.subscribe(isLoading => this.isLoading = isLoading);
-    this.searchSubscription = this.appStateProvider.search.subscribe(search => this.search = search);
-    this.categoriesSubscription = this.appStateProvider.categories.subscribe(categories => this.categories = categories);
+    public feedProvider: FeedProvider,
+  ) {
+    this.dirty$ = this.feedProvider.filtersDirty$();
+    this.feedLoading$ = this.feedProvider.loading$;
+    this.posts$ = this.feedProvider.posts$();
+    this.pinnedPosts$ = this.postsProvider.pinned();
+    this.noMorePage$ = this.feedProvider.noMorePage$;
   }
 
-  ionViewWillUnload() {
-    this.postsSubscription.unsubscribe();
-    this.pinnedPostsSubscription.unsubscribe();
-    this.isLoadingSubscription.unsubscribe();
+  doInfinite(loading) {
+    const nextPage = this.feedProvider.page$.value + 1;
+    this.feedProvider.page$.next(nextPage);
+    this.feedLoading$
+      .filter(is => !is)
+      .take(1)
+      .subscribe(() => loading.complete());
   }
 
-  flatCategories(categories: Category[]): String {
-    return categories.map(category => category.name).join(', ');
+  goToPost({ id }: Post) {
+    this.navCtrl.push('PostPage', { id });
   }
 
-  presentAuthorInformation(author: Author): void {
-    let modal = this.modalCtrl.create(InfoAuthorPage, { author });
-    modal.present();
-  }
-
-  showPost({ id }: Post): void {
-    this.navCtrl.push(PostPage, { id });
-  }
-
-  doInfinite(infiniteScroll) {
-    this.appStateProvider.loadMore();
+  trackById(index, post) {
+    return post.id;
   }
 
 }

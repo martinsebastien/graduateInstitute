@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 
 import { Author } from '../../models/author';
 
+@IonicPage()
 @Component({
   selector: 'page-info-author',
-  templateUrl: 'info-author.html'
+  templateUrl: 'info-author.html',
 })
 export class InfoAuthorPage {
 
-  public author: Author;
+  author: Author;
 
   constructor(
-    public params: NavParams,
-    public viewCtrl: ViewController
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
   ) {}
 
-  ionViewWillLoad() {
-    this.author = this.params.get('author');
+  ionViewDidLoad() {
+    this.author = this.navParams.get('author');
   }
 
   dismiss() {

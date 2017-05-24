@@ -1,0 +1,7 @@
+<ion-item *ngIf="available">
+  <ion-label text-right>
+    <span [hidden]="subscribed">Get notified when there is a new post</span>
+    <span [hidden]="!subscribed">You will be notified !</span>
+  </ion-label>
+  <ion-toggle [ngModel]="subscribed" (ngModelChange)="toggleSubscription()"></ion-toggle>
+</ion-item>

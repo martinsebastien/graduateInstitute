@@ -1,0 +1,28 @@
+gi-post {
+
+  ion-card {
+
+    ion-card-content {
+
+      ion-card-title {
+        font-family: 'Open Sans Condensed', sans-serif;
+        text-transform: uppercase;
+        line-height: 1.2em!important;
+        margin-bottom: 10px!important;
+        color: #474747!important;
+      }
+
+      h4 {
+        font-weight: 800!important;
+        color: color($colors, primary)!important;
+        margin-bottom: 25px!important;
+      }
+
+      > div {
+        img {
+          height: auto!important;
+        }
+      }
+    }
+  }
+}

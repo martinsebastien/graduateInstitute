@@ -1,58 +1,28 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, NavParams } from 'ionic-angular';
-import { Subscription } from 'rxjs';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs';
 
-import { PostsProvider, Post, Author, Category } from '../../providers/posts.provider';
-import { AppStateProvider } from '../../providers/app-state.provider';
+import { PostsProvider, Post } from '../../providers/posts/posts';
 
-import { InfoAuthorPage } from '../info-author/info-author';
-
+@IonicPage()
 @Component({
   selector: 'page-post',
-  templateUrl: 'post.html'
+  templateUrl: 'post.html',
 })
 export class PostPage {
 
-  public post?: Post;
-  public isLoading: Boolean = false;
-
-  private postSubscription: Subscription;
-  private isLoadingSubscription: Subscription;
+  public post$: Observable<Post>;
 
   constructor(
-    public params: NavParams,
     public navCtrl: NavController,
-    public modalCtrl: ModalController,
-    public postsProvider: PostsProvider,
-    public appStateProvider: AppStateProvider,
+    public navParams: NavParams,
+    public posts: PostsProvider,
   ) {}
 
-  ionViewWillLoad() {
-    // Get param id
-    const id = this.params.get('id');
-    // Load posts
-    this.postSubscription = this.postsProvider
-      .get(id)
-      .subscribe(post => this.post = post);
-
-    // Load isLoading
-    this.isLoadingSubscription = this.appStateProvider
-      .loading$
-      .subscribe(isLoading => this.isLoading = isLoading);
-  }
-
-  categories(categories: Category[]): String {
-    return categories.map(category => category.name).join(', ');
-  }
-
-  ionViewWillUnload() {
-    this.postSubscription.unsubscribe();
-    this.isLoadingSubscription.unsubscribe();
-  }
-
-  presentAuthorInformation(author: Author): void {
-    const modal = this.modalCtrl.create(InfoAuthorPage, { author });
-    modal.present();
+  ionViewDidLoad() {
+    const id = this.navParams.get('id');
+    if (!id) return;
+    this.post$ = this.posts.get(id);
   }
 
 }

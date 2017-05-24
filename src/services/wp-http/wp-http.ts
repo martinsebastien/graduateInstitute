@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 export { Response, RequestOptionsArgs };
 
 @Injectable()
-export class HttpService {
+export class WpHttpService {
 
-  private base = 'http://graduateinstitute.blackpen.tv/wp-json/wp/v2';
+  private base = 'http://academicadviser.graduateinstitute.ch/wp-json/wp/v2';
 
   constructor(
     private http: Http,

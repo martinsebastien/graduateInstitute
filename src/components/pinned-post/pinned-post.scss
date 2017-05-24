@@ -1,0 +1,43 @@
+gi-pinned-post {
+
+  ion-item {
+    width: calc(100% - 20px)!important;
+    margin: 10px!important;
+    padding: 0!important;
+    border-radius: 2px!important;
+
+    ion-thumbnail {
+      width: 100px!important;
+      height: 70px!important;
+      overflow: hidden!important;
+      margin: 0!important;
+      margin-right: 20px!important;
+
+      img {
+        width: 100%!important;
+        height: 100%!important;
+        object-fit: cover!important;
+      }
+    }
+
+    h2 {
+      text-transform: uppercase!important;
+      font-family: 'Open Sans Condensend', sans-serif!important;
+      font-size: 14px!important;
+    }
+
+    h4 {
+      font-family: 'Open Sans', sans-serif;
+      color: color($colors, primary)!important;
+      font-size: 12px!important;
+      margin-top: 7px!important;
+    }
+
+    button {
+
+      ion-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+gi-categories-filter {
+  font-size: 12px;
+  width: 100%;
+  height: 60px;
+
+  .categories-label {
+      color: #474747;
+      font-weight: 400;
+
+    ion-icon {
+      margin-left: 10px;
+      font-size: 1.6em;
+    }
+  }
+
+  .categories-content {
+    z-index: 9999!important;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    ion-item {
+      cursor: pointer;
+
+      .chip {
+        width: 15px;
+        height: 15px;
+        background: #a7a7a7;
+        margin-right: 20px!important;
+
+        &.selected {
+          background: color($colors, primary);
+
+          &::after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 25px;
+            top: 50%;
+            width: 8px;
+            height: 4px;
+            margin-top: -4px;
+            margin-left: 2px;
+            border-bottom: 2px solid #fff;
+            border-left: 2px solid #fff;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+
+}

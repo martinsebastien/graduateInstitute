@@ -1,0 +1,22 @@
+gi-search {
+
+  ion-input input {
+    margin: 0!important;
+    width: 100%!important;
+  }
+
+  button {
+    position: absolute!important;
+    top: 15px!important;
+    right: 15px!important;
+    width: 20px!important;
+    height: 20px!important;
+    cursor: pointer!important;
+    color: #030303!important;
+    margin: 0!important;
+
+    ion-icon {
+      font-size: 20px!important;
+    }
+  }
+}

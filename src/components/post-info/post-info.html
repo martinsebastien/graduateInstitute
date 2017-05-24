@@ -1,0 +1,16 @@
+<ion-row *ngIf="post.author">
+  <ion-col>
+    <ion-item (click)="showInfoAuthor($event, post.author)" tappable>
+      <ion-avatar item-left>
+        <img [src]="post.author.avatar" alt="" />
+      </ion-avatar>
+      <h5>Posted by</h5>
+      <p>
+        <span *ngIf="post.author.name">{{post.author.name}}</span>
+        <span *ngIf="post.author.description">, {{post.author.description}}</span>
+      </p>
+      <h5>Categories</h5>
+      <p>{{post.flatCategories()}}</p>
+    </ion-item>
+  </ion-col>
+</ion-row>

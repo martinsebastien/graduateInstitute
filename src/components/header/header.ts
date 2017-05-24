@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'gi-header',
-  templateUrl: 'header.html',
+  templateUrl: 'header.html'
 })
 export class HeaderComponent {
 
@@ -11,7 +11,7 @@ export class HeaderComponent {
     public navCtrl: NavController,
   ) {}
 
-  backToHome() {
+  goToHome() {
     this.navCtrl.popToRoot();
   }
 

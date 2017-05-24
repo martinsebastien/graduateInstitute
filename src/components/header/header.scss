@@ -1,27 +1,28 @@
-gi-header { 
-  .bg {
-    width: 100%;
-    filter: grayscale(100%);
-  }
+gi-header {
 
-  .gradient {
+  .background {
     position: fixed;
     z-index: -2;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(hsla(0, 0%, 70%, .5), #b2b2b2);
+    }
+
+    img {
+      width: 100%;
+      filter: grayscale(100%);
+    }
   }
 
-  .gradient:after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background: linear-gradient(hsla(0, 0%, 70%, .5), #b2b2b2);
-  }
-
-  .topheader {
+  header {
     display: block;
     height: 30px;
     background-color: #fff;
@@ -30,23 +31,17 @@ gi-header {
 
     h1 {
       position: absolute;
+      top: 0;
       right: 10px;
-      top: 0px;
-      margin-top: 0px;
+      margin-top: 0;
       color: color($colors, primary);
       font-family: 'Open Sans', sans-serif;
       font-size: 12px;
       font-weight: 700;
       line-height: 30px;
       text-transform: uppercase;
-
-      @media screen and (min-width: 550px) {
-        display: block;
-        margin: 0;
-        padding: 0;
-        padding-right: 10px;
-        float: right;
-      }
+      padding-right: 10px;
     }
   }
+
 }

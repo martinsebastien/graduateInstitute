@@ -1,0 +1,23 @@
+gi-post-info {
+  ion-row ion-col {
+    padding: 0!important;
+
+    ion-item {
+      border-top: 1px solid #dadada!important;
+
+      ion-avatar img {
+        width: 55px !important;
+        height: 55px !important;
+      }
+
+      h5 {
+        color: color($colors, primary)!important;
+        font-size: 12px!important;
+      }
+
+      p {
+        font-size: 12px!important;
+      }
+    }
+  }
+}

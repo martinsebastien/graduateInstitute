@@ -1,7 +1,6 @@
 // http://ionicframework.com/docs/v2/theming/
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -16,20 +15,21 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+
 .content {
   background: #b2b2b2;
   font-family: 'Open Sans', sans-serif;
 }
 
-$colors:	(
-  primary:    #e3051a,
-  tmp: #f8f8f8,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222,
-);
-
 .old-browser-toast .toast-wrapper {
   background: color($colors, danger);
+}
+
+.gi-loading {
+  width: 100%;
+  text-align: center;
+
+  ion-icon {
+    font-size: 28px!important;
+  }
 }

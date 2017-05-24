@@ -1,0 +1,14 @@
+<button ion-button clear class="categories-label" (click)="toggleMenu()">
+  FILTERS
+  <ion-icon *ngIf="menuOpen" name="md-arrow-dropup"></ion-icon>
+  <ion-icon *ngIf="!menuOpen" name="md-arrow-dropdown"></ion-icon>
+</button>
+<div [hidden]="!menuOpen" class="categories-content">
+  <ion-list>
+    <ion-item *ngFor="let category of categories$ | async" (click)="toggleCategory(category)">
+      <span [ngClass]="{'chip':true,'selected':isAnActiveCategory(category)}" item-left></span>
+      <h2>{{category.name}}</h2>
+    </ion-item>
+  </ion-list>
+</div>
+

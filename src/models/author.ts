@@ -37,7 +37,7 @@ export class Author {
 
   }
 
-  hasNoInformations(): boolean {
+  hasNoInformation(): boolean {
     return !this.title && !this.email && !this.phoneNumber && !this.openingTimes;
   }
 

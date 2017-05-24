@@ -3,67 +3,40 @@
   <gi-header></gi-header>
   <gi-menu></gi-menu>
 
-  <div *ngIf="pinnedPosts.length && !search && !categories.length">
-
+  <div *ngIf="pinnedPosts$ | async; let pinneds" [hidden]="dirty$ | async">
     <h3>Pinned Articles</h3>
-
     <ion-list>
-
-      <ion-item *ngFor="let post of pinnedPosts" class="pinned" (click)="showPost(post)" tappable>
-        <ion-thumbnail item-left class="thumb">
-          <img [src]="post.thumbnail.src" [alt]="post.thumbnail.alt" />
-        </ion-thumbnail>
-        <h2 [innerHtml]="post.title"></h2>
-        <h4>{{post.date | date}}</h4>
-        <button ion-button clear item-right><ion-icon name="md-list" class="iconSpace"></ion-icon>MORE</button>
-      </ion-item>
-
+      <gi-pinned-post
+        *ngFor="let post of pinneds;trackBy: trackById"
+        [post]="post"
+        (click)="goToPost(post)"
+        tappable
+      ></gi-pinned-post>
     </ion-list>
-
   </div>
 
-  <div *ngIf="posts.length">
+  <h3 [hidden]="dirty$ | async">All Articles</h3>
 
-    <h3>All articles</h3>
-    <ion-card *ngFor="let post of posts" (click)="showPost(post)" tappable>
-      <img *ngIf="post.thumbnail" [src]="post.thumbnail.src" alt="" />
-      <img *ngIf="post.video" [src]="post.video.src" alt="" />
+  <div *ngIf="posts$ | async; let posts">
 
-      <ion-card-content>
-        <ion-card-title [innerHtml]="post.title"></ion-card-title>
-        <h4 class="dateTitleArticles">{{post.date | date}}</h4>
-        <ion-card-content class="noPadding" [innerHtml]="post.excerpt"></ion-card-content>
-      </ion-card-content>
+    <gi-post
+      *ngFor="let post of posts;trackBy: trackById"
+      [post]="post"
+      (click)="goToPost(post)"
+      tappable
+    ></gi-post>
 
-      <ion-row>
-        <!-- Author -->
-        <ion-col *ngIf="post.author">
-          <ion-item (click)="presentAuthorInformation(post.author)" class="authorInfo">
-            <ion-avatar item-left>
-              <img [src]="post.author.avatar" class="avatar" />
-            </ion-avatar>
-            <h5>Posted by</h5>
-            <p>{{post.author.name}}, {{post.author.description}}</p>
-            <h5>Categories</h5>
-            <p>{{flatCategories(post.categories)}}</p>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-    </ion-card>
-
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    <ion-infinite-scroll
+      [enabled]="!(noMorePage$ | async)"
+      (ionInfinite)="doInfinite($event)"
+    >
+      <ion-infinite-scroll-content spinner="ios"></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 
-  </div>
+    <div class="what-is-love_baby-dont-hurt-me_dont-hurt-me_no-more" [hidden]="!(noMorePage$ | async)">
+      <p>No more posts</p>
+    </div>
 
-  <div *ngIf="!posts.length">
-    <ion-card>
-      <ion-card-content>
-        <p>No article found</p>
-      </ion-card-content>
-    </ion-card>
   </div>
 
 </ion-content>

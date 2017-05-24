@@ -3,49 +3,6 @@
   <gi-header></gi-header>
   <gi-back></gi-back>
 
-  <div *ngIf="post">
-    <ion-card>
-      <img *ngIf="post.thumbnail" [src]="post.thumbnail.src" alt="" />
-      <img *ngIf="post.video" [src]="post.video.src" alt="" />
-
-      <ion-card-content>
-        <ion-card-title [innerHtml]="post.title"></ion-card-title>
-        <h4 class="dateTitleArticles">{{post.date | date}}</h4>
-        <ion-card-content class="noPadding" [innerHtml]="post.content"></ion-card-content>
-      </ion-card-content>
-
-      <ion-row>
-        <!-- Author -->
-        <ion-col *ngIf="post.author">
-          <ion-item (click)="presentAuthorInformation(post.author)" class="authorInfo">
-            <ion-avatar item-left>
-              <img [src]="post.author.avatar" class="avatar" />
-            </ion-avatar>
-            <h5>Posted by</h5>
-            <p>{{post.author.name}}, {{post.author.description}}</p>
-            <h5>Categories</h5>
-            <p>{{categories(post.categories)}}</p>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-    </ion-card>
-
-    <ion-card>
-      <ion-card-content>
-        <p *ngIf="post.commentOpen"></p>
-        <p *ngIf="!post.commentOpen"><i>Comments are disabled for this article.</i></p>
-      </ion-card-content>
-    </ion-card>
-
-  </div>
-
-  <div *ngIf="!post">
-    <ion-card>
-      <ion-card-content>
-        <p>Article is loading</p>
-      </ion-card-content>
-    </ion-card>
-  </div>
+  <gi-post [post]="post$ | async" [full]="true"></gi-post>
 
 </ion-content>

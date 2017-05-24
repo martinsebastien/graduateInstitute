@@ -1,0 +1,8 @@
+<ion-item>
+  <ion-thumbnail item-left>
+    <img [src]="post.thumbnail.src" [alt]="post.thumbnail.alt" />
+  </ion-thumbnail>
+  <h2 [innerHtml]="post.title"></h2>
+  <h4>{{post.date | date}}</h4>
+  <button ion-button clear item-right><ion-icon name="md-list"></ion-icon> MORE</button>
+</ion-item>

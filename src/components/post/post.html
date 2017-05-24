@@ -1,0 +1,13 @@
+<ion-card *ngIf="post">
+  <img *ngIf="post.thumbnail" [src]="post.thumbnail.src" alt="" />
+  <!-- gi-video -->
+
+  <ion-card-content>
+    <ion-card-title [innerHtml]="post.title"></ion-card-title>
+    <h4>{{post.date | date }}</h4>
+    <div *ngIf="full" [innerHtml]="post.content"></div>
+    <div *ngIf="!full" [innerHtml]="post.excerpt"></div>
+  </ion-card-content>
+
+  <gi-post-info [post]="post"></gi-post-info>
+</ion-card>
