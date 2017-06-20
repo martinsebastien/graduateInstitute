@@ -1,6 +1,6 @@
 <ion-card *ngIf="post">
-  <img *ngIf="post.thumbnail" [src]="post.thumbnail.src" alt="" />
-  <!-- gi-video -->
+  <img *ngIf="!post.videoUrl && post.thumbnail" [src]="post.thumbnail.src" alt="" />
+  <gi-video *ngIf="post.videoUrl" [url]="post.videoUrl"></gi-video>
 
   <ion-card-content>
     <ion-card-title [innerHtml]="post.title"></ion-card-title>
