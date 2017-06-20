@@ -1,12 +1,19 @@
 <ion-card *ngIf="post">
-  <img *ngIf="!post.videoUrl && post.thumbnail" [src]="post.thumbnail.src" alt="" />
   <gi-video *ngIf="post.videoUrl" [url]="post.videoUrl"></gi-video>
+  <div *ngIf="!post.videoUrl && post.thumbnail" class="thumbnailContainer">
+    <img [src]="post.thumbnail.src" alt="" />
+  </div>
 
   <ion-card-content>
     <ion-card-title [innerHtml]="post.title"></ion-card-title>
     <h4>{{post.date | date }}</h4>
     <div *ngIf="full" [innerHtml]="post.content"></div>
     <div *ngIf="!full" [innerHtml]="post.excerpt"></div>
+
+    <div *ngIf="post.linkFile" class="fileLink">
+      <ion-icon name="ios-link-outline"></ion-icon>
+      <a [href]="post.linkFile.src" [innerHtml]="post.linkFile.title" download></a>
+    </div>
   </ion-card-content>
 
   <gi-post-info [post]="post"></gi-post-info>
