@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { PostComponent } from './post';
 
 import { PostInfoComponentModule } from '../post-info/post-info.module';
+import { VideoComponentModule } from '../video/video.module';
 
 @NgModule({
   declarations: [
@@ -11,9 +12,10 @@ import { PostInfoComponentModule } from '../post-info/post-info.module';
   imports: [
     IonicPageModule.forChild(PostComponent),
     PostInfoComponentModule,
+    VideoComponentModule,
   ],
   exports: [
-    PostComponent
-  ]
+    PostComponent,
+  ],
 })
 export class PostComponentModule {}
