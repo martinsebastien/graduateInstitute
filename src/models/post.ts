@@ -2,6 +2,7 @@ import { Author } from './author';
 import { Thumbnail } from './thumbnail';
 import { Category }  from './category';
 import { Comment } from './comment';
+import { File } from './file';
 
 export class Post {
 
@@ -17,7 +18,7 @@ export class Post {
   public comments: Comment[];
   public videoUrl: String;
   public linkWeb: String;
-  public linkFile: String;
+  public linkFile: File;
   public commentOpen: boolean;
   public json: any;
 
@@ -60,7 +61,7 @@ export class Post {
     p.comments = comments.map(comment => Comment.build(comment));
     p.videoUrl = video_url;
     p.linkWeb = link_web;
-    p.linkFile = link_file;
+    p.linkFile = File.build(link_file);
     p.commentOpen = comment_status == 'open';
     return p;
 
