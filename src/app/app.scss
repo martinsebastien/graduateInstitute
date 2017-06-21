@@ -21,6 +21,11 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.card, .item {
+  margin: 10px auto 10px auto !important;
+  max-width: 960px;
+}
+
 .old-browser-toast .toast-wrapper {
   background: color($colors, danger);
 }

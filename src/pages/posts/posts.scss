@@ -1,13 +1,20 @@
 page-posts {
 
-  h3 {
-    margin: 10px;
-    padding: 10px;
-    text-transform: uppercase;
-    color: #fff;
-    background: color($colors, primary);
-    font-size: 12px;
-    display: inline-block;
+  .titleContainer {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+
+    h3 {
+      margin: 10px;
+      margin-left: 0;
+      padding: 10px;
+      text-transform: uppercase;
+      color: #fff;
+      background: color($colors, primary);
+      font-size: 12px;
+      display: inline-block;
+    }
   }
 
   .what-is-love_baby-dont-hurt-me_dont-hurt-me_no-more {
