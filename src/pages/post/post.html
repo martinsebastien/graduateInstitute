@@ -1,8 +1,10 @@
 <ion-content>
 
   <gi-header></gi-header>
-  <gi-back></gi-back>
+  <gi-align-container>
+    <gi-back></gi-back>
 
-  <gi-post [post]="post$ | async" [full]="true"></gi-post>
+    <gi-post [post]="post$ | async" [full]="true"></gi-post>
+  </gi-align-container>
 
 </ion-content>

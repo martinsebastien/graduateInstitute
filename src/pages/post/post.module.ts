@@ -5,6 +5,7 @@ import { PostPage } from './post';
 import { PostComponentModule } from '../../components/post/post.module';
 import { HeaderComponentModule } from '../../components/header/header.module';
 import { BackComponentModule } from '../../components/back/back.module';
+import { AlignContainerComponentModule } from '../../components/align-container/align-container.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BackComponentModule } from '../../components/back/back.module';
     PostComponentModule,
     HeaderComponentModule,
     BackComponentModule,
+    AlignContainerComponentModule,
   ],
   exports: [
     PostPage,
