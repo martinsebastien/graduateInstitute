@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { WpHttpService } from '../services/wp-http/wp-http';
 import { PostsProvider } from '../providers/posts/posts';
 import { CategoriesProvider } from '../providers/categories/categories';
+import { CommentsProvider } from '../providers/comments/comments';
 import { FeedProvider } from '../providers/feed/feed';
 
 const cloudSettings: CloudSettings = {
@@ -56,6 +57,7 @@ const cloudSettings: CloudSettings = {
     WpHttpService,
     PostsProvider,
     CategoriesProvider,
+    CommentsProvider,
     FeedProvider,
   ],
 })
