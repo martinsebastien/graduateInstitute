@@ -14,7 +14,7 @@
 
       <gi-post [post]="post" [full]="true"></gi-post>
 
-      <gi-new-comment [post]="post" [refresh$]="refresh$"></gi-new-comment>
+      <gi-new-comment *ngIf="post.commentOpen" [post]="post" [refresh$]="refresh$"></gi-new-comment>
 
       <gi-comments *ngIf="post.commentOpen" [comments]="post.comments"></gi-comments>
 
