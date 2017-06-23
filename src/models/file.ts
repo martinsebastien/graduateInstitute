@@ -5,7 +5,6 @@ export class File {
 
   static build(link_file: string): File {
     if (!link_file) return null;
-    console.log(link_file)
 
     // Create File
     const t = new File;

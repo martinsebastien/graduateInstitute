@@ -5,7 +5,6 @@ export class Web {
 
   static build(link_web: string): Web {
     if (!link_web) return null;
-    console.log(link_web)
 
     // Create File
     const t = new Web;
