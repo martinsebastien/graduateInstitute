@@ -9,10 +9,8 @@
     <ion-list>
 
       <ion-item *ngFor="let comment of comments">
-        <h2>
-          {{comment.name}}
-          <small>{{comment.date | date:'medium'}}</small>
-        </h2>
+        <h2>{{comment.name}}</h2>
+        <h3>{{comment.date | date:'medium'}}</h3>
         <div [innerHTML]="comment.content"></div>
       </ion-item>
 

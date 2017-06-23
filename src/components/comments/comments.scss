@@ -5,8 +5,27 @@ gi-comments {
     font-weight: bold;
   }
 
+  ion-item {
+    padding: 0!important;
+    margin: 0!important;
+    margin-bottom: 10px!important;
+  }
+
   ion-label {
     white-space: normal!important;
+    padding: 0!important;
+    margin: 0!important;
+  }
+
+  h2 {
+    color: color($colors, primary)!important;
+    font-size: 1.1em!important;
+  }
+
+  h3 {
+    color: #666!important;
+    font-size: .7em!important;
+    margin-bottom: 5px!important;
   }
 
 }
