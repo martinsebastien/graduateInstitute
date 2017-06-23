@@ -1,36 +1,47 @@
 <ion-content>
 
   <gi-header></gi-header>
-  
+
   <gi-align-container>
+
     <gi-menu></gi-menu>
 
     <div *ngIf="pinnedPosts$ | async; let pinneds" [hidden]="dirty$ | async">
-      <div class="titleContainer">
-        <h3>Pinned Articles</h3>
-      </div>
+      <h3>Pinned Articles</h3>
       <ion-list>
-        <gi-pinned-post *ngFor="let post of pinneds;trackBy: trackById" [post]="post" (click)="goToPost(post)" tappable></gi-pinned-post>
+        <gi-pinned-post
+          *ngFor="let post of pinneds;trackBy: trackById"
+          [post]="post"
+          (click)="goToPost(post)"
+          tappable
+        ></gi-pinned-post>
       </ion-list>
     </div>
 
-    <div class="titleContainer">
-      <h3 [hidden]="dirty$ | async">All Articles</h3>
-    </div>
+    <h3 [hidden]="dirty$ | async">All Articles</h3>
 
     <div *ngIf="posts$ | async; let posts">
 
-      <gi-post *ngFor="let post of posts;trackBy: trackById" [post]="post" (click)="goToPost(post)" tappable></gi-post>
+      <gi-post
+        *ngFor="let post of posts;trackBy: trackById"
+        [post]="post"
+        (click)="goToPost(post)"
+        tappable
+      ></gi-post>
 
-      <ion-infinite-scroll [enabled]="!(noMorePage$ | async)" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll
+        [enabled]="!(noMorePage$ | async)"
+        (ionInfinite)="doInfinite($event)"
+      >
         <ion-infinite-scroll-content spinner="ios"></ion-infinite-scroll-content>
       </ion-infinite-scroll>
 
-      <div class="what-is-love_baby-dont-hurt-me_dont-hurt-me_no-more" [hidden]="!(noMorePage$ | async)">
-        <p>No more posts</p>
-      </div>
-
     </div>
+
+    <div class="what-is-love_baby-dont-hurt-me_dont-hurt-me_no-more" [hidden]="!(noMorePage$ | async)">
+      <p>No more posts</p>
+    </div>
+
   </gi-align-container>
 
 </ion-content>

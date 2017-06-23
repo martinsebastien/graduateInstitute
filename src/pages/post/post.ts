@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { PostsProvider, Post } from '../../providers/posts/posts';
 
@@ -11,18 +11,30 @@ import { PostsProvider, Post } from '../../providers/posts/posts';
 })
 export class PostPage {
 
-  public post$: Observable<Post>;
+  public id$: BehaviorSubject<string> = new BehaviorSubject(null);
+  public refresh$: BehaviorSubject<void> = new BehaviorSubject(null);
+  public post$: Observable<Post> = Observable.combineLatest(this.id$, this.refresh$)
+    .map(([id]) => id)
+    .filter(id => !!id)
+    .switchMap(id => this.posts.get(id))
+    .share();
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public posts: PostsProvider,
-  ) {}
-
-  ionViewDidLoad() {
+  ) {
     const id = this.navParams.get('id');
-    if (!id) return;
-    this.post$ = this.posts.get(id);
+    id && this.id$.next(id);
+  }
+
+  postRefresh(refresher) {
+    this.post$
+      .take(1)
+      .finally(() => refresher.complete())
+      .subscribe();
+
+    this.refresh$.next(null);
   }
 
 }

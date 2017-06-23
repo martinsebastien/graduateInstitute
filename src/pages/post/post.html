@@ -1,10 +1,29 @@
 <ion-content>
 
+  <ion-refresher (ionRefresh)="postRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <gi-header></gi-header>
+
   <gi-align-container>
+
     <gi-back></gi-back>
 
-    <gi-post [post]="post$ | async" [full]="true"></gi-post>
+    <div *ngIf="post$ | async; let post" [hidden]="dirty$ | async">
+
+      <gi-post [post]="post" [full]="true"></gi-post>
+
+      <gi-new-comment [post]="post" [refresh$]="refresh$"></gi-new-comment>
+
+      <gi-comments *ngIf="post.commentOpen" [comments]="post.comments"></gi-comments>
+
+      <div class="what-is-love_baby-dont-hurt-me_dont-hurt-me_no-more" [hidden]="post.commentOpen">
+        <p>Comments are closed</p>
+      </div>
+
+    </div>
+
   </gi-align-container>
 
 </ion-content>

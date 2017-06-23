@@ -5,6 +5,7 @@ export class Comment {
   public name: string;
   public content: string;
   public date: Date;
+  public status: string;
 
   static build(data: any): Comment {
 
@@ -14,6 +15,7 @@ export class Comment {
       author_name,
       date,
       content: { rendered: content },
+      status,
     } = data;
 
     const c = new Comment;
@@ -22,6 +24,7 @@ export class Comment {
     c.name = author_name;
     c.date = new Date(date);
     c.content = content;
+    c.status = status;
     return c;
 
   }
