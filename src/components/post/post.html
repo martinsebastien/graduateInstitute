@@ -11,8 +11,12 @@
     <div *ngIf="!full" [innerHtml]="post.excerpt"></div>
 
     <div *ngIf="post.linkFile" class="fileLink">
-      <ion-icon name="ios-link-outline"></ion-icon>
+      <ion-icon name="ios-document-outline"></ion-icon>
       <a [href]="post.linkFile.src" [innerHtml]="post.linkFile.title" download></a>
+    </div>
+    <div *ngIf="post.linkWeb" class="fileLink">
+      <ion-icon name="ios-link-outline"></ion-icon>
+      <a [href]="post.linkWeb.src" [innerHtml]="post.linkWeb.title" download></a>
     </div>
   </ion-card-content>
 
