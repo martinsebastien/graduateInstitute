@@ -1,0 +1,40 @@
+<ion-card>
+
+  <ion-card-header>
+    New comment
+  </ion-card-header>
+
+  <ion-card-content>
+    <form
+      [formGroup]="newCommentForm"
+      (submit)="newComment($event)"
+    >
+
+      <ion-input
+        formControlName="name"
+        placeholder="Your name"
+      ></ion-input>
+
+      <ion-input
+        formControlName="email"
+        placeholder="Your email"
+      ></ion-input>
+
+      <ion-textarea
+        formControlName="content"
+        placeholder="Your message"
+      ></ion-textarea>
+
+      <button
+        type="submit"
+        [disabled]="!newCommentForm.valid"
+        ion-button
+        full
+      >
+        Commenter
+      </button>
+
+    </form>
+  </ion-card-content>
+
+</ion-card>
