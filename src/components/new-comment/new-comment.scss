@@ -9,13 +9,15 @@ gi-new-comment {
 
     ion-input {
       border-radius: 3px;
-      border: 1px solid #888;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding-left: 10px;
       margin-bottom: 10px;
     }
 
     ion-textarea {
       border-radius: 4px;
-      border: 1px solid #888;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding-left: 10px;
       margin-bottom: 10px;
     }
 
