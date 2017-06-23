@@ -19,7 +19,7 @@ const cloudSettings: CloudSettings = {
     app_id: '769f8f2e',
   },
   push: {
-    sender_id: '954196176197',
+    sender_id: '611426639173',
     pluginConfig: {
       ios: {
         badge: true,
