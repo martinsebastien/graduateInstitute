@@ -1,3 +1,4 @@
+<div [hidden]="!menuOpen" (click)="toggleMenu()" class="black-bg"></div>
 <button ion-button clear class="categories-label" (click)="toggleMenu()">
   FILTERS
   <ion-icon *ngIf="menuOpen" name="md-arrow-dropup"></ion-icon>
