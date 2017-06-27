@@ -9,10 +9,12 @@ export class Web {
     // Create File
     const t = new Web;
     t.src = link_web;
-    t.title = link_web.substr(link_web.lastIndexOf('/') + 1, (link_web.lastIndexOf('.') - link_web.lastIndexOf('/')) - 1);
-    t.title == '' && link_web;
+    t.title = this.findTitle(link_web) || link_web;
     return t;
+  }
 
+  static findTitle(src) {
+    return src.substr(src.lastIndexOf('/') + 1, (src.lastIndexOf('.') - src.lastIndexOf('/')) - 1);
   }
 
 }

@@ -1,5 +1,13 @@
 gi-header {
 
+  .container {
+    a {
+      img{
+        max-width: 306px;
+      }
+    }
+  }
+
   .background {
     position: fixed;
     z-index: -2;
@@ -41,6 +49,10 @@ gi-header {
       line-height: 30px;
       text-transform: uppercase;
       padding-right: 10px;
+
+      @media screen and (max-width: 320px) {
+        font-size: 9px;
+      }
     }
   }
 
