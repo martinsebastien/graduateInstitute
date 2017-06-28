@@ -3,14 +3,10 @@ import { IonicPageModule } from 'ionic-angular';
 import { InfoAuthorPage } from './info-author';
 
 @NgModule({
-  declarations: [
-    InfoAuthorPage,
-  ],
+  declarations: [],
   imports: [
     IonicPageModule.forChild(InfoAuthorPage),
   ],
-  exports: [
-    InfoAuthorPage
-  ]
+  exports: []
 })
 export class InfoAuthorPageModule {}

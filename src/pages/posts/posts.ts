@@ -4,6 +4,8 @@ import { PostsProvider, Post } from '../../providers/posts/posts';
 import { FeedProvider } from '../../providers/feed/feed';
 import { Observable } from 'rxjs';
 
+import { PostPage } from '../post/post';
+
 @IonicPage()
 @Component({
   selector: 'page-posts',
@@ -40,7 +42,7 @@ export class PostsPage {
   }
 
   goToPost({ id }: Post) {
-    this.navCtrl.push('PostPage', { id });
+    this.navCtrl.push(PostPage, { id });
   }
 
   trackById(index, post) {

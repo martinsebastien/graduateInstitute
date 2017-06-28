@@ -14,6 +14,24 @@ import { CategoriesProvider } from '../providers/categories/categories';
 import { CommentsProvider } from '../providers/comments/comments';
 import { FeedProvider } from '../providers/feed/feed';
 
+import { PostsPage } from '../pages/posts/posts';
+import { PostPage } from '../pages/post/post';
+import { InfoAuthorPage } from '../pages/info-author/info-author';
+
+import { AlignContainerComponent } from '../components/align-container/align-container';
+import { BackComponent } from '../components/back/back'
+import { CategoriesFilterComponent } from '../components/categories-filter/categories-filter'
+import { CommentsComponent } from '../components/comments/comments'
+import { HeaderComponent } from '../components/header/header'
+import { MenuComponent } from '../components/menu/menu'
+import { NewCommentComponent } from '../components/new-comment/new-comment'
+import { PinnedPostComponent } from '../components/pinned-post/pinned-post'
+import { PostComponent } from '../components/post/post'
+import { PostInfoComponent } from '../components/post-info/post-info'
+import { PushComponent } from '../components/push/push'
+import { SearchComponent } from '../components/search/search'
+import { VideoComponent } from '../components/video/video'
+
 const cloudSettings: CloudSettings = {
   core: {
     app_id: '769f8f2e',
@@ -35,6 +53,22 @@ const cloudSettings: CloudSettings = {
 @NgModule({
   declarations: [
     AppComponent,
+    PostsPage,
+    PostPage,
+    InfoAuthorPage,
+    AlignContainerComponent,
+    BackComponent,
+    CategoriesFilterComponent,
+    CommentsComponent,
+    HeaderComponent,
+    MenuComponent,
+    NewCommentComponent,
+    PinnedPostComponent,
+    PostComponent,
+    PostInfoComponent,
+    PushComponent,
+    SearchComponent,
+    VideoComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +80,22 @@ const cloudSettings: CloudSettings = {
   bootstrap: [IonicApp],
   entryComponents: [
     AppComponent,
+    PostsPage,
+    PostPage,
+    InfoAuthorPage,
+    AlignContainerComponent,
+    BackComponent,
+    CategoriesFilterComponent,
+    CommentsComponent,
+    HeaderComponent,
+    MenuComponent,
+    NewCommentComponent,
+    PinnedPostComponent,
+    PostComponent,
+    PostInfoComponent,
+    PushComponent,
+    SearchComponent,
+    VideoComponent,
   ],
   providers: [
     {

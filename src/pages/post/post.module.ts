@@ -2,28 +2,11 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { PostPage } from './post';
 
-import { PostComponentModule } from '../../components/post/post.module';
-import { HeaderComponentModule } from '../../components/header/header.module';
-import { BackComponentModule } from '../../components/back/back.module';
-import { AlignContainerComponentModule } from '../../components/align-container/align-container.module';
-import { CommentsComponentModule } from '../../components/comments/comments.module';
-import { NewCommentComponentModule } from '../../components/new-comment/new-comment.module';
-
 @NgModule({
-  declarations: [
-    PostPage,
-  ],
+  declarations: [],
   imports: [
     IonicPageModule.forChild(PostPage),
-    PostComponentModule,
-    HeaderComponentModule,
-    BackComponentModule,
-    AlignContainerComponentModule,
-    CommentsComponentModule,
-    NewCommentComponentModule,
   ],
-  exports: [
-    PostPage,
-  ],
+  exports: [],
 })
 export class PostPageModule {}

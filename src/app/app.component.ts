@@ -3,11 +3,13 @@ import { Platform, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { PostsPage } from '../pages/posts/posts';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class AppComponent {
-  rootPage:any = 'PostsPage';
+  rootPage:any = PostsPage;
 
   constructor(
     platform: Platform,
