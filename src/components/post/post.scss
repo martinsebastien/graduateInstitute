@@ -20,9 +20,20 @@ gi-post {
       ion-card-title {
         font-family: 'Open Sans Condensed', sans-serif;
         text-transform: uppercase;
-        line-height: 1.2em!important;
         margin-bottom: 10px!important;
         color: #474747!important;
+        font-size: 21px!important;
+        line-height: 24px!important;
+
+        @media screen and (min-width: 400px) {
+          font-size: 28px!important;
+          line-height: 31px!important;
+        }
+
+        @media screen and (min-width: 760px) {
+          font-size: 36px!important;
+          line-height: 41px!important;
+        }
       }
 
       h4 {
