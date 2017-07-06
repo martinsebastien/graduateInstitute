@@ -7,7 +7,7 @@
     <gi-menu></gi-menu>
 
     <div *ngIf="pinnedPosts$ | async; let pinneds" [hidden]="dirty$ | async">
-      <h3>Pinned Articles</h3>
+      <h3 [hidden]="pinneds.length==0">Pinned Articles</h3>
       <ion-list>
         <gi-pinned-post
           *ngFor="let post of pinneds;trackBy: trackById"
