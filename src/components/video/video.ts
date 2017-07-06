@@ -17,7 +17,7 @@ export class VideoComponent {
   @Input()
   public set url(val: string) {
     const id = getYoutubeId(val);
-    this.videoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${id}`);
+    this.videoUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${id}?modestbranding=1&autohide=1&showinfo=0`);
   }
 
 }
