@@ -2,7 +2,11 @@ gi-post {
 
   ion-card {
     .thumbnailContainer {
-      height: 320px;
+      height: 320px!important;
+
+      @media screen and (min-width: 960px) {
+        height: 450px!important;
+      }
 
       img {
         height: 100%;
