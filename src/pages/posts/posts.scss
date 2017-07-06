@@ -10,4 +10,10 @@ page-posts {
     display: inline-block;
   }
 
+  @media screen and (min-width: 960px) {
+    gi-post ion-card {
+      margin-bottom: 40px!important;
+    }
+  }
+
 }
