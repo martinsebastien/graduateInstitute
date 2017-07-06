@@ -10,9 +10,9 @@
 
     <h4>{{post.date | date }}</h4>
 
-    <div *ngIf="full" [innerHtml]="post.content"></div>
+    <div *ngIf="full" class="post__content" [innerHtml]="post.content"></div>
 
-    <div *ngIf="!full" [innerHtml]="post.excerpt"></div>
+    <div *ngIf="!full" class="post__content post__excerpt" [innerHtml]="post.excerpt"></div>
 
     <div *ngIf="post.linkFile" class="fileLink">
       <ion-icon name="ios-document-outline"></ion-icon>

@@ -49,10 +49,22 @@ gi-post {
         margin-bottom: 25px!important;
       }
 
-      > div {
+      .post__content {
+
         img {
           height: auto!important;
         }
+
+        p {
+          margin-bottom: 1em!important;
+        }
+
+        &.post__excerpt {
+          p {
+            margin-bottom: auto!important;
+          }
+        }
+
       }
     }
   }
