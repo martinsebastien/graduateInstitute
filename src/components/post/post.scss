@@ -13,6 +13,13 @@ gi-post {
 
     ion-card-content {
 
+      padding-top: 20px!important;
+      padding-bottom: 20px!important;
+
+      @media screen and (min-width: 960px) {
+        padding: 50px!important;
+      }
+
       .fileLink {
         margin-top: 20px;
       }
