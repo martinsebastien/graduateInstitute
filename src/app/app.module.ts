@@ -73,7 +73,12 @@ const cloudSettings: CloudSettings = {
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(AppComponent),
+    IonicModule.forRoot(AppComponent, {}, {
+      links: [
+        { component: PostsPage, name: 'Posts', segment: '' },
+        { component: PostPage, name: 'Post', segment: 'post/:id', defaultHistory: [PostsPage] },
+      ],
+    }),
     CloudModule.forRoot(cloudSettings),
     IonicStorageModule.forRoot(),
   ],
