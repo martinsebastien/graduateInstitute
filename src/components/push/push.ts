@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController, Platform } from 'ionic-angular';
-import { Push, PushToken } from '@ionic/cloud-angular';
-import { Storage } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @Component({
   selector: 'gi-push',
@@ -16,46 +15,60 @@ export class PushComponent implements OnInit {
     public platform: Platform,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    public push: Push,
-    public storage: Storage,
-  ) {}
+    private _PLATFORM: Platform,
+    private _SIGNAL: OneSignal
+  ) {
+    this._PLATFORM.ready()
+      .then(() => {
+        this.triggerNotification();
+      });
+  }
 
-  ngOnInit() {
-    if (!this.platform.is('cordova')) {
-      this.available = false;
-      return;
-    }
+  triggerNotification() {
 
-    // First subscription
-    this.storage.get('registered')
-      .then(is => typeof is == 'boolean' ? is : this.storage.set('registered', true))
-      .then(is => {
-        if (is) this.subscribe();
-        else this.unsubscribe();
+    // Define settings for iOS
+    var iosSettings = {};
+    iosSettings["kOSSettingsKeyAutoPrompt"] = true;
+    iosSettings["kOSSettingsKeyInAppLaunchURL"] = false;
+
+
+    // Initialise plugin with OneSignal service
+    this._SIGNAL.startInit('5d151b9b-3ba3-46f9-a0ef-ec28f03789e7', '47845089999').iOSSettings(iosSettings);
+
+
+    // Control how OneSignal notifications will be shown when 
+    // one is received while your app is in focus
+    this._SIGNAL.inFocusDisplaying(this._SIGNAL.OSInFocusDisplayOption.InAppAlert);
+
+
+    // Retrieve the OneSignal user id and the device token
+    this._SIGNAL.getIds()
+      .then((ids) => {
+        console.log('getIds: ' + JSON.stringify(ids));
       });
 
-    // Subscribe to push notification
-    this.push.rx.notification().subscribe(n => {
-      const { closed, asleep } = n.app;
-      const { id }: any = n.payload || {};
-      id && (closed || asleep) && this.navCtrl.push('PostPage', { id });
-    });
-  }
 
-  toggleSubscription() {
-    if (this.subscribed) return this.storage.set('registered', false).then(() => this.unsubscribe());
-    else return this.storage.set('registered', true).then(() => this.subscribe());
-  }
+    // When a push notification is received handle 
+    // how the application will respond
+    this._SIGNAL.handleNotificationReceived()
+      .subscribe((msg) => {
+        // Log data received from the push notification service
+        console.log('Notification received');
+        console.dir(msg);
+      });
 
-  private subscribe() {
-    return this.push.register()
-      .then((t: PushToken) => this.push.saveToken(t))
-      .then(() => this.subscribed = true);
-  }
 
-  private unsubscribe() {
-    return this.push.unregister()
-      .then(() => this.subscribed = false);
-  }
+    // When a push notification is opened by the user
+    // handle how the application will respond
+    this._SIGNAL.handleNotificationOpened()
+      .subscribe((msg) => {
+        // Log data received from the push notification service
+        console.log('Notification opened');
+        console.dir(msg);
+      });
 
+
+    // End plugin initialisation
+    this._SIGNAL.endInit();
+  }
 }

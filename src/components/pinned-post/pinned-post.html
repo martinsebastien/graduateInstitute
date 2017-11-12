@@ -1,6 +1,8 @@
 <ion-item>
   <ion-thumbnail item-left>
-    <img [src]="post.thumbnail.src" [alt]="post.thumbnail.alt" />
+    <div *ngIf="post.thumbnail">
+      <img [src]="post.thumbnail.src" [alt]="post.thumbnail.alt" />
+    </div>
   </ion-thumbnail>
   <h2 [innerHtml]="post.title"></h2>
   <h4>{{post.date | date}}</h4>

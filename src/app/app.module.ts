@@ -6,6 +6,7 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { OneSignal } from '@ionic-native/onesignal';
 
 import { AppComponent } from './app.component';
 import { WpHttpService } from '../services/wp-http/wp-http';
@@ -109,6 +110,7 @@ const cloudSettings: CloudSettings = {
     },
     StatusBar,
     SplashScreen,
+    OneSignal,
     WpHttpService,
     PostsProvider,
     CategoriesProvider,

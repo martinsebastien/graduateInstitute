@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="ch.graduateinstitute.academicadviser" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="ch.thegraduateinstitute.academicadviser" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Graduate Institute</name>
     <description>The Academic Adviser</description>
     <author email="info@graduateinstitute.ch" href="https://theacademicadviser.graduateinstute.ch">Graduate Institute</author>
@@ -90,4 +90,5 @@
     <plugin name="phonegap-plugin-push" spec="^1.8.4">
         <variable name="SENDER_ID" value="611426639173" />
     </plugin>
+    <plugin name="onesignal-cordova-plugin" spec="^2.2.0" />
 </widget>
